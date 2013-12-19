@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="/usr/bin/fpc" Date="1363520124"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -vewnhi -Fu/tmp/ibconsole/lzRichEdit/widgetset -Fu/tmp/ibconsole/lzRichEdit/interfaces/win32 -Fu/tmp/ibconsole/lzRichEdit/interfaces/gtk2 -Fu/usr/share/lazarus/1.2RC1/packager/units/x86_64-linux -Fu/usr/share/lazarus/1.2RC1/components/lazutils/lib/x86_64-linux -Fu/usr/share/lazarus/1.2RC1/lcl/units/x86_64-linux -Fu/usr/share/lazarus/1.2RC1/lcl/units/x86_64-linux/gtk2 -Fu/tmp/ibconsole/lzRichEdit/ -FU/tmp/ibconsole/lzRichEdit/lib/x86_64-linux/ -l -dLCL -dLCLgtk2 lazrichedit.pas"/>
+</CONFIG>
