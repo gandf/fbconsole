@@ -69,7 +69,7 @@ function TDialog.FormHelp(Command: Word; Data: Integer;
   var CallHelp: Boolean): Boolean;
 begin
   CallHelp := False;
-  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,GENERAL_PREFERENCES);
+ // Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,GENERAL_PREFERENCES);
 end;
 
 procedure TDialog.FormCreate(Sender: TObject);

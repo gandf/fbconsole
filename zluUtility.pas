@@ -133,20 +133,20 @@ end;
 
 function IsIBRunning(): boolean;
 begin
-  if GetWindow(GetDesktopWindow,GW_HWNDNEXT)= FindWindow('IB_Server', 'InterBase Server') then
-    result := false
-  else
+//  if GetWindow(GetDesktopWindow,GW_HWNDNEXT)= FindWindow('IB_Server', 'InterBase Server') then
+//    result := false
+//  else
     result := true;
 end;
 
 function OSVersionInfo(): DWORD;
-var
-  lVersion: Windows.OSVERSIONINFO;
+//var
+  //lVersion: Windows.OSVERSIONINFO;
 begin
-  ZeroMemory(@lVersion, SizeOf(lVersion));
-  lVersion.dwOSVersionInfoSize := sizeof(lVersion);
-  GetVersionEx(lVersion);
-  result := lVersion.dwPlatformId
+  //ZeroMemory(@lVersion, SizeOf(lVersion));
+  //lVersion.dwOSVersionInfoSize := sizeof(lVersion);
+  //GetVersionEx(lVersion);
+//  result := lVersion.dwPlatformId
 end;
 
 {****************************************************************
@@ -208,7 +208,7 @@ begin
     else
       lEXEName := Format('%s%s ',[lRegistry.ReadString('ServerDirectory'),'ibguard.exe']);
   finally
-    if WinExec(StrPCopy(lArray,lEXEName),1) > 31 then
+//    if WinExec(StrPCopy(lArray,lEXEName),1) > 31 then
       result := true;
     lRegistry.Free;
     Screen.Cursor := crDefault;
@@ -216,16 +216,16 @@ begin
 end;
 
 function StartServer(): boolean;
-var
+(*var
   lRegistry: TRegistry;
   lStartUpInfo: STARTUPINFO;
   lSecurityAttr: SECURITY_ATTRIBUTES;
   lProcessInfo: PROCESS_INFORMATION;
   lEXEName: string;
-  lArray: array[0..255] of char;
+  lArray: array[0..255] of char;*)
 begin
   result := false;
-  lRegistry := TRegistry.Create;
+(*  lRegistry := TRegistry.Create;
   try
     Screen.Cursor := crHourglass;
     lRegistry.RootKey := HKEY_LOCAL_MACHINE;
@@ -247,19 +247,19 @@ begin
   finally
     lRegistry.Free;
     Screen.Cursor := crDefault;
-  end;
+  end;*)
 end;
 
 function StopServer(): boolean;
-var
+(*var
   lHWND: HWND;
   lVersion: DWORD;
   lRegistry: TRegistry;
   lEXEName: string;
-  lArray: array[0..255] of char;
+  lArray: array[0..255] of char;*)
 begin
   result := false;
-  lRegistry := TRegistry.Create;
+  (*lRegistry := TRegistry.Create;
   try
     Screen.Cursor := crHourglass;
     lVersion := OSVersionInfo();
@@ -284,7 +284,7 @@ begin
   finally
     lRegistry.Free;
     Screen.Cursor := crDefault;
-  end;
+  end;*)
 end;
 
 // extracts param values for a connect statememt

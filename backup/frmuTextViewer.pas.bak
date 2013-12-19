@@ -15,12 +15,14 @@
 *****************************************************************}
 unit frmuTextViewer;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   ComCtrls, ToolWin, StdCtrls, Menus, ImgList, Printers, IBServices, frmuDlgClass,
-  RichEdit, StdActns, ActnList;
+  RichBox, StdActns, ActnList, FileUtil;
 
 type
   TfrmTextViewer = class(TForm)
@@ -87,7 +89,7 @@ implementation
 uses
   zluGlobal, zluContextHelp, frmuMain, frmuMessage, IB, IBErrorCodes;
 
-{$R *.DFM}
+{$R *.lfm}
 
 {****************************************************************
 *
@@ -200,7 +202,7 @@ begin
     begin
       // if the specified file already exists the show overwrite message
       // if the user does not wish to overwrite the file then exit
-      if FileExists(loSaveDialog.FileName) then
+      if FileExistsUTF8(loSaveDialog.FileName) { *Converted from FileExists* } then
         if MessageDlg(Format('OK to overwrite %s', [loSaveDialog.FileName]),
           mtConfirmation, mbYesNoCancel, 0) <> idYes then Exit;
 

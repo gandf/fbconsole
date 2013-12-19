@@ -22,7 +22,7 @@ interface
 uses
   LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   ComCtrls, ToolWin, StdCtrls, Menus, ImgList, Printers, IBServices, frmuDlgClass,
-  RichEdit, StdActns, ActnList, FileUtil;
+  RichBox, StdActns, ActnList, FileUtil;
 
 type
   TfrmTextViewer = class(TForm)
@@ -42,7 +42,7 @@ type
     sbSaveAs: TToolButton;
     stbStatusBar: TStatusBar;
     tlbStandard: TToolBar;
-    reEditor: TRichEdit;
+    reEditor: TlzRichEdit;
     TextViewActions: TActionList;
     EditCopy1: TEditCopy;
     EditCut1: TEditCut;

@@ -128,22 +128,23 @@ end;
 
 procedure TibcPersistentInfo.GetSetting(var Setting: TPersistentSetting);
 begin
-  case (VarType(Setting.Value) and varTypeMask) of
+(*  case (VarType(Setting.Value) and varTypeMask) of
     varSmallint: Setting.Value := FRegistry.ReadInteger(Setting.Name);
     varInteger: Setting.Value := FRegistry.ReadInteger(Setting.Name);
     varBoolean: Setting.Value := FRegistry.ReadBool(Setting.Name);
     varString: Setting.Value := FRegistry.ReadString(Setting.Name);
   end;
+  *)
 end;
 
 procedure TibcPersistentInfo.StoreSetting(Setting: TPersistentSetting);
 begin
-  case (VarType(Setting.Value) and varTypeMask) of
+  (*  case (VarType(Setting.Value) and varTypeMask) of
     varSmallint: FRegistry.WriteInteger(Setting.Name, Setting.Value);
     varInteger: FRegistry.WriteInteger(Setting.Name, Setting.Value);
     varBoolean: FRegistry.WriteBool(Setting.Name, Setting.Value);
     varString: FRegistry.WriteString(Setting.Name, Setting.Value);
-  end;
+  end;*)
 end;
 
 procedure TibcPersistentInfo.InitRegistry;
