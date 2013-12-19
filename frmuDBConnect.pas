@@ -201,7 +201,7 @@ function TfrmDBConnect.FormHelp(Command: Word; Data: Integer;
 begin
   CallHelp := False;
   // call WinHelp and show Database Connect topic
-  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_CONNECT);
+//  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_CONNECT);
 end;
 
 procedure TfrmDBConnect.btnCancelClick(Sender: TObject);

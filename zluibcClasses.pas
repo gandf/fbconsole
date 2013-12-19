@@ -44,8 +44,9 @@ uses
   IBServices, IBSQL, DB, IBCustomDataSet, Controls, frmuObjectWindow, zluGlobal,
   frmuTextViewer, ComCtrls ;
 
-type
 
+type
+   HTreeItem = THandle;
   TibcTreeNode = class(TComponent)
   private
     FNodeID: HTreeItem;
@@ -54,7 +55,7 @@ type
     FShowSystem: boolean;
     FObjectList: TStringList;
   public
-    property NodeID: HTreeItem read FNodeID;
+    property NodeID:HTreeItem read FNodeID;
     property NodeName: string read FNodeName write FNodeName;
     property NodeType: word read FNodeType;
     property ShowSystem: boolean read FShowSystem write FShowSystem;
@@ -268,16 +269,16 @@ begin
   begin
     Database := FDatabase;
     Transaction := FTransaction;
-    ObjectView := true;
-    SparseArrays := true;
+  //  ObjectView := true;
+//    SparseArrays := true;
   end;
 
   with FQryDataSet do
   begin
     Database := FDatabase;
     Transaction := FQryTransaction;
-    ObjectView := true;
-    SparseArrays := true;
+//    ObjectView := true;
+//    SparseArrays := true;
   end;
 
   FTransaction.DefaultDatabase := FDatabase;

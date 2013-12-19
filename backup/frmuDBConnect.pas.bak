@@ -34,10 +34,12 @@
 *****************************************************************}
 unit frmuDBConnect;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, SysUtils, Forms, ExtCtrls, StdCtrls, Classes, Controls,
+  LCLIntf, LCLType, LMessages, SysUtils, Forms, ExtCtrls, StdCtrls, Classes, Controls,
   zluibcClasses, IB, Messages, frmuDlgClass;
 
 type
@@ -77,7 +79,7 @@ implementation
 uses
   IBServices, IBDatabase, frmuMessage, zluGlobal, zluContextHelp;
 
-{$R *.DFM}
+{$R *.lfm}
 
 function DoDBConnect(const CurrSelServer: TibcServerNode; CurrSelDatabase: TibcDatabaseNode): boolean;
 begin

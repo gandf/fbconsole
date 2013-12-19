@@ -896,10 +896,11 @@ end;
  	 procname -- Name of procedure to investigate }
 
 procedure TIBExtract.ListProcs(ProcedureName : String; AlterOnly : Boolean);
-resourcestring
+
+const
   CreateProcedureStr1 = 'CREATE PROCEDURE %s ';
   CreateProcedureStr2 = 'BEGIN EXIT; END %s%s';
-const
+
   ProcedureSQL =
     'SELECT * FROM RDB$PROCEDURES ' +
     'ORDER BY RDB$PROCEDURE_NAME';

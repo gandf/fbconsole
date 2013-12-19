@@ -26,7 +26,7 @@ interface
 uses LCLIntf, LCLType, LMessages, Classes, Graphics, Forms, Controls, Menus, Dialogs, StdCtrls,
   Buttons, ExtCtrls, ComCtrls, ImgList, ToolWin, Grids, DBGrids, DBCtrls,
   Registry, zluibcClasses, IBServices, IB, Messages, SysUtils,
-  RichEdit, DB, IBHeader, sqldb,
+  RichBox, DB, IBHeader, sqldb,
   IBDatabaseInfo, frmuDlgClass, ActnList, StdActns, wisql, frmuObjectWindow,
   IBExtract, AppEvnts, zluPersistent;
 
