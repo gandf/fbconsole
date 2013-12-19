@@ -1,38 +1,34 @@
-object frmAbout: TfrmAbout
+inherited frmAbout: TfrmAbout
   Left = 322
   Top = 244
   ActiveControl = Button1
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'About IBConsole'
-  ClientHeight = 292
-  ClientWidth = 419
-  Color = clBtnFace
-  Font.Charset = ANSI_CHARSET
+  Font.CharSet = ANSI_CHARSET
   Font.Color = clBlack
   Font.Height = -14
-  Font.Name = 'MS Sans Serif'
-  Font.Style = []
-  Position = poScreenCenter
   OnShow = FormShow
-  PixelsPerInch = 96
-  object Panel1: TPanel
+  Position = poScreenCenter
+  object Panel1: TPanel[0]
     Left = 9
+    Height = 215
     Top = 2
     Width = 400
-    Height = 215
     BevelInner = bvLowered
     BevelOuter = bvLowered
+    ClientHeight = 215
+    ClientWidth = 400
     TabOrder = 0
     object Image1: TImage
-      Left = 0
-      Top = 0
-      Width = 396
+      Left = 2
       Height = 211
+      Top = 2
+      Width = 396
       Align = alClient
       AutoSize = True
       Picture.Data = {
-        0A544A504547496D6167656E350000FFD8FFE000104A46494600010101012C01
+        0A544A706567496D6167656E350000FFD8FFE000104A46494600010101012C01
         2C0000FFDB004300080606070605080707070909080A0C140D0C0B0B0C191213
         0F141D1A1F1E1D1A1C1C20242E2720222C231C1C2837292C30313434341F2739
         3D38323C2E333432FFDB0043010909090C0B0C180D0D1832211C213232323232
@@ -459,16 +455,17 @@ object frmAbout: TfrmAbout
         F950E32629D7AE8FF043F91FF1A43AE5C9FE08BF23FE34514B950F9E5DC89F55
         BA6070CABF4155DEEEE24FBF3391E99A28A7CA8529321A28A281051451400514
         5140051451400514514005145140051451400514514005145140051451400514
-        51400514514005145140051451400514514005145140051451401FFFD9}
+        51400514514005145140051451400514514005145140051451401FFFD9
+      }
       Stretch = True
     end
   end
-  object stxAppVersion: TStaticText
+  object stxAppVersion: TStaticText[1]
     Left = 26
+    Height = 4
     Top = 260
     Width = 4
-    Height = 4
-    Font.Charset = ANSI_CHARSET
+    Font.CharSet = ANSI_CHARSET
     Font.Color = clRed
     Font.Height = -19
     Font.Name = 'Arial'
@@ -476,95 +473,90 @@ object frmAbout: TfrmAbout
     ParentFont = False
     TabOrder = 1
   end
-  object stxCopyright: TStaticText
+  object stxCopyright: TStaticText[2]
     Left = 18
+    Height = 17
     Top = 243
     Width = 178
-    Height = 17
     Caption = 'Copyright © 2000 Inprise Corporation'
-    Font.Charset = ANSI_CHARSET
+    Font.CharSet = ANSI_CHARSET
     Font.Color = clBlack
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
-    Font.Style = []
     ParentFont = False
     TabOrder = 2
   end
-  object stxhttpLink: TStaticText
+  object stxhttpLink: TStaticText[3]
+    Cursor = crHandPoint
     Left = 274
+    Height = 17
     Top = 246
     Width = 120
-    Height = 17
-    Cursor = crHandPoint
     Caption = 'http://www.borland.com'
-    Font.Charset = ANSI_CHARSET
+    Font.CharSet = ANSI_CHARSET
     Font.Color = clBlue
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsUnderline]
+    OnClick = stxhttpLinkClick
     ParentFont = False
     TabOrder = 3
-    OnClick = stxhttpLinkClick
   end
-  object stxWindowsVersion: TStaticText
+  object stxWindowsVersion: TStaticText[4]
     Left = 18
+    Height = 21
     Top = 260
     Width = 227
-    Height = 21
-    AutoSize = False
     Caption = 'Windows Version'
-    Font.Charset = ANSI_CHARSET
+    Font.CharSet = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
-    Font.Style = []
     ParentFont = False
     TabOrder = 4
   end
-  object Button1: TButton
+  object Button1: TButton[5]
     Left = 299
+    Height = 25
     Top = 265
     Width = 75
-    Height = 25
     Caption = 'OK'
     Default = True
-    Font.Charset = ANSI_CHARSET
+    Font.CharSet = ANSI_CHARSET
     Font.Color = clBlack
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
-    Font.Style = []
     ModalResult = 1
     ParentFont = False
     TabOrder = 5
   end
-  object stxIBConsoleVer: TStaticText
+  object stxIBConsoleVer: TStaticText[6]
     Left = 18
+    Height = 17
     Top = 227
     Width = 81
-    Height = 17
     Caption = 'stxIBConsoleVer'
-    Font.Charset = ANSI_CHARSET
+    Font.CharSet = ANSI_CHARSET
     Font.Color = clBlack
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
-    Font.Style = []
     ParentFont = False
     TabOrder = 6
   end
-  object stxInterBase: TStaticText
+  object stxInterBase: TStaticText[7]
+    Cursor = crHandPoint
     Left = 274
+    Height = 17
     Top = 227
     Width = 128
-    Height = 17
-    Cursor = crHandPoint
     Caption = 'http://www.interbase.com'
-    Font.Charset = ANSI_CHARSET
+    Font.CharSet = ANSI_CHARSET
     Font.Color = clBlue
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsUnderline]
+    OnClick = stxhttpLinkClick
     ParentFont = False
     TabOrder = 7
-    OnClick = stxhttpLinkClick
   end
 end

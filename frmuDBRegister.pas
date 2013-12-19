@@ -78,7 +78,7 @@ type
     { Private declarations }
     FCurrSelServer : TibcServerNode;
     function VerifyInputData(): boolean;
-    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+//    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
   end;
@@ -179,7 +179,7 @@ function TfrmDBRegister.FormHelp(Command: Word; Data: Integer;
 begin
   CallHelp := False;
   // call WinHelp and show Register Database topic
-  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_REGISTER);
+//  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_REGISTER);
 end;
 
 procedure TfrmDBRegister.btnCancelClick(Sender: TObject);
@@ -322,7 +322,7 @@ begin
   end;
 end;
 
-procedure TfrmDBRegister.WMNCLButtonDown( var Message: TWMNCLButtonDown );
+{procedure TfrmDBRegister.WMNCLButtonDown( var Message: TWMNCLButtonDown );
 var
   ScreenPt: TPoint;
   ClientPt: TPoint;
@@ -336,7 +336,7 @@ begin
     Message.Result := 0;
   end else
    inherited;
-end;
+end;}
 
 procedure TfrmDBRegister.edtRoleChange(Sender: TObject);
 begin

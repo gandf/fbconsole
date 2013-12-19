@@ -35,10 +35,12 @@
 
 unit frmuServerRegister;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ExtCtrls, IBServices, frmuDlgClass;
 
 type
@@ -71,7 +73,7 @@ type
     { Private declarations }
     FAction: word;
     function VerifyInputData(): boolean;
-    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+//    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
   end;
@@ -83,7 +85,7 @@ implementation
 uses
   frmuMessage, zluGlobal, zluContextHelp, zluUtility;
 
-{$R *.DFM}
+{$R *.lfm}
 
 
 {****************************************************************
@@ -202,7 +204,7 @@ function TfrmServerRegister.FormHelp(Command: Word; Data: Integer;
 begin
   CallHelp := False;
   // call WinHelp and show Register Server topic
-  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_REGISTER);
+//  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_REGISTER);
 end;
 
 procedure TfrmServerRegister.btnCancelClick(Sender: TObject);

@@ -28,7 +28,7 @@ uses LCLIntf, LCLType, LMessages, Classes, Graphics, Forms, Controls, Menus, Dia
   Registry, zluibcClasses, IBServices, IB, Messages, SysUtils,
   RichBox, DB, IBHeader, sqldb,
   IBDatabaseInfo, frmuDlgClass, ActnList, StdActns, wisql, frmuObjectWindow,
-  IBExtract, AppEvnts, zluPersistent;
+  IBExtract, zluPersistent,IBQuery,IBDatabase,IBCustomDataSet;
 
 type
   TfrmMain = class(TForm)

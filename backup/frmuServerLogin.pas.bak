@@ -19,10 +19,12 @@
 
 unit frmuServerLogin;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, SysUtils, Forms, ExtCtrls, StdCtrls, Classes, Controls,
+  LCLIntf, LCLType, LMessages, SysUtils, Forms, ExtCtrls, StdCtrls, Classes, Controls,
   Messages, zluibcClasses, IB, frmuDlgClass;
 
 type
@@ -45,7 +47,7 @@ type
     { Private declarations }
     function VerifyInputData(): boolean;
     class function DoLogin(var CurrSelServer: TibcServerNode): boolean;
-    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+//    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
   end;
@@ -54,15 +56,15 @@ function ServerLogin(var CurrSelServer: TibcServerNode; const SilentLogin: boole
 
 implementation
 
-uses zluGlobal, frmuMessage, zluContextHelp, iberrorcodes;
+uses zluGlobal, frmuMessage, zluContextHelp, IBErrorCodes;
 
-{$R *.DFM}
+{$R *.lfm}
 
 function TfrmServerLogin.FormHelp(Command: Word; Data: Integer;
   var CallHelp: Boolean): Boolean;
 begin
   CallHelp := False;
-  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_LOGIN);
+//  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_LOGIN);
 end;
 
 class function TfrmServerLogin.DoLogin(var CurrSelServer: TibcServerNode): boolean;

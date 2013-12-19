@@ -91,7 +91,7 @@ type
 
     FSourceServerNode: TibcServerNode;
     function VerifyInputData(): boolean;
-    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+//    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
     FFileList: TStringList;
@@ -1122,7 +1122,7 @@ begin
   Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_RESTORE);
 end;
 
-procedure TfrmDBRestore.WMNCLButtonDown( var Message: TWMNCLButtonDown );
+{procedure TfrmDBRestore.WMNCLButtonDown( var Message: TWMNCLButtonDown );
 var
   ScreenPt: TPoint;
   ClientPt: TPoint;
@@ -1136,7 +1136,7 @@ begin
     Message.Result := 0;
   end else
    inherited;
-end;
+end;}
 
 procedure TfrmDBRestore.IncreaseRows(Sender: TObject; ACol,
   ARow: Integer; var CanSelect: Boolean);

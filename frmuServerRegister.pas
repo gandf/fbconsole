@@ -73,7 +73,7 @@ type
     { Private declarations }
     FAction: word;
     function VerifyInputData(): boolean;
-    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+//    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
   end;
@@ -204,7 +204,7 @@ function TfrmServerRegister.FormHelp(Command: Word; Data: Integer;
 begin
   CallHelp := False;
   // call WinHelp and show Register Server topic
-  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_REGISTER);
+//  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_REGISTER);
 end;
 
 procedure TfrmServerRegister.btnCancelClick(Sender: TObject);
@@ -381,7 +381,7 @@ begin
   end;  
 end;
 
-procedure TfrmServerRegister.WMNCLButtonDown( var Message: TWMNCLButtonDown );
+{procedure TfrmServerRegister.WMNCLButtonDown( var Message: TWMNCLButtonDown );
 var
   ScreenPt: TPoint;
   ClientPt: TPoint;
@@ -395,6 +395,6 @@ begin
     Message.Result := 0;
   end else
    inherited;
-end;
+end;}
 
 end.

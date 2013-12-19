@@ -96,7 +96,7 @@ type
     function GetUserList(): boolean;
     function VerifyInputData(): boolean;
     procedure GetUsers(const idx: integer = -1);
-    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+//    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
     AddNew: boolean;
@@ -217,7 +217,7 @@ function TfrmUserInfo.FormHelp(Command: Word; Data: Integer;
 begin
   CallHelp := False;
   // call WinHelp and show server security topic
-  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_SECURITY);
+//  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_SECURITY);
 end;
 
 {****************************************************************
@@ -844,7 +844,7 @@ begin
 //  SetLength(FUserInfo, 10);
 end;
 
-procedure TfrmUserInfo.WMNCLButtonDown( var Message: TWMNCLButtonDown );
+{procedure TfrmUserInfo.WMNCLButtonDown( var Message: TWMNCLButtonDown );
 var
   ScreenPt: TPoint;
   ClientPt: TPoint;
@@ -858,7 +858,7 @@ begin
     Message.Result := 0;
   end else
    inherited;
-end;
+end;}
 
 procedure TfrmUserInfo.DeleteUserUpdate(Sender: TObject);
 begin

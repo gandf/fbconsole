@@ -19,11 +19,13 @@
 
 unit zluSQL;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Classes, Windows, SysUtils, Dialogs, Forms, Messages, Controls,
-  IBDatabase, IBCustomDataset, IBDatabaseInfo;
+  Classes, LCLIntf, LCLType, LMessages, SysUtils, Dialogs, Forms, Messages, Controls,
+  IBDatabase, IBCustomDataSet, IBDatabaseInfo;
 
 type
   TISQLExceptionCode = (eeInitialization, eeInvDialect, eeFOpen, eeParse,
@@ -132,7 +134,7 @@ type
 implementation
 
 uses
-  IBSql, stdctrls, zluGlobal, dmuMain, IBHeader, frmuMessage;
+  IBSQL, stdctrls, zluGlobal, dmuMain, IBHeader, frmuMessage;
 
 procedure TIBSQLObj.GetEvent (const Query: String; out event: TSQLEvent; out sEvent: TSQLSubEvent);
 var

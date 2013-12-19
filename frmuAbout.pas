@@ -117,7 +117,7 @@ end;
 
 procedure TfrmAbout.FormShow(Sender: TObject);
 var
-  VersionInfo : TOsVersionInfo;
+//  VersionInfo : TOsVersionInfo;
   Build: String;
   V1, V2, V3, V4: Integer;
   tmpBuffer,
@@ -125,30 +125,30 @@ var
 begin
   inherited;
   { Get OS Version Information }
-  VersionInfo.dwOSVersionInfoSize := SizeOf(VersionInfo);
+{  VersionInfo.dwOSVersionInfoSize := SizeOf(VersionInfo);
   GetVersionEx(VersionInfo);
 
   with VersionInfo do
   begin
-    if dwPlatformID = VER_PLATFORM_WIN32_NT then
+  if dwPlatformID = VER_PLATFORM_WIN32_NT then
     begin
       build := Format (BUILDSTR, [LoWord(dwBuildNumber), szCSDVersion]);
       stxWindowsVersion.Caption := Format('%s %d.%d (%s)', [PLATFORM_NT, dwMajorVersion, dwMinorVersion, Build]);
     end
     else
       stxWindowsVersion.Caption := Format('%s', [PLATFORM_W9X]);
-  end;
+  end; }
 
   { Get the version information for IBConsole }
   Path := Application.ExeName;
   GetFileVersion(Path, V1, V2, V3, V4);
   stxIBConsoleVer.Caption := Format('Version: %d.%d.%d.%d', [V1, V2, V3, V4]);
 
-  { Get file version information for GDS32.DLL and IBSERVER.EXE }
+  { Get file version information for GDS32.DLL and IBSERVER.EXE
   // Get the gds32.dll path
   SetLength(tmpBuffer, MAX_PATH);
   GetSystemDirectory(PChar(tmpBuffer), MAX_PATH);
-  Path := tmpBuffer + '\gds32.dll';
+  Path := tmpBuffer + '\gds32.dll';}
 
   // Check to see if it exists
   if FileExistsUTF8(Path) { *Converted from FileExists* } then
@@ -164,12 +164,12 @@ procedure TfrmAbout.GetFileVersion(const Filename: String; out Major1,
 var
   Info: Pointer;
   InfoSize: DWORD;
-  FileInfo: PVSFixedFileInfo;
+//  FileInfo: PVSFixedFileInfo;
   FileInfoSize: DWORD;
   Tmp: DWORD;
 begin
   // Get the size of the FileVersionInformatioin
-  InfoSize := GetFileVersionInfoSize(PChar(FileName), Tmp);
+{InfoSize := GetFileVersionInfoSize(PChar(FileName), Tmp);
   // If InfoSize = 0, then the file may not exist, or
   // it may not have file version information in it.
   if InfoSize = 0 then
@@ -189,7 +189,7 @@ begin
     Minor2 := FileInfo.dwFileVersionLS and $FFFF;
   finally
     FreeMem(Info, FileInfoSize);
-  end;
+  end;}
 end;
 
 procedure TfrmAbout.stxhttpLinkClick(Sender: TObject);

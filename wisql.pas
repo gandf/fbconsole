@@ -27,7 +27,7 @@ uses
   LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   Menus, ComCtrls, ToolWin, ExtCtrls, StdCtrls, Grids, DBGrids,
   Db, ImgList, StdActns, ActnList, zluibcClasses, IB, IBDatabase, IBCustomDataSet,
-  zluSQL, MemoLists, FileUtil;
+  zluSQL, MemoLists, FileUtil,RichBox;
 
 type
 
@@ -44,7 +44,7 @@ type
     TabData: TTabSheet;
     dbgSQLResults: TDBGrid;
     TabResults: TTabSheet;
-    reSqlOutput: TRichEdit;
+    reSqlOutput: TlzRichEdit;
     splISQLHorizontal: TSplitter;
     GridSource: TDataSource;
     pmClientDialect: TPopupMenu;
@@ -72,7 +72,7 @@ type
     N5: TMenuItem;
     Connect1: TMenuItem;
     pnlEnterSQL: TPanel;
-    reSqlInput: TRichEdit;
+    reSqlInput: TlzRichEdit;
     stbISQL: TStatusBar;
     Print1: TMenuItem;
     Close1: TMenuItem;

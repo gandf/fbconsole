@@ -47,7 +47,7 @@ type
     { Private declarations }
     function VerifyInputData(): boolean;
     class function DoLogin(var CurrSelServer: TibcServerNode): boolean;
-    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+//    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
   end;
@@ -64,7 +64,7 @@ function TfrmServerLogin.FormHelp(Command: Word; Data: Integer;
   var CallHelp: Boolean): Boolean;
 begin
   CallHelp := False;
-  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_LOGIN);
+//  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_LOGIN);
 end;
 
 class function TfrmServerLogin.DoLogin(var CurrSelServer: TibcServerNode): boolean;
@@ -181,7 +181,7 @@ begin
   end;
 end;
 
-procedure TfrmServerLogin.WMNCLButtonDown( var Message: TWMNCLButtonDown );
+{procedure TfrmServerLogin.WMNCLButtonDown( var Message: TWMNCLButtonDown );
 var
   ScreenPt: TPoint;
   ClientPt: TPoint;
@@ -195,7 +195,7 @@ begin
     Message.Result := 0;
   end else
    inherited;
-end;
+end;}
 
 procedure TfrmServerLogin.FormDestroy(Sender: TObject);
 begin

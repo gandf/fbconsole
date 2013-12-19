@@ -33,12 +33,15 @@
 *
 *****************************************************************}
 unit frmuDBRestore;
+
+{$MODE Delphi}
                   
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, ComCtrls, ExtCtrls, zluibcClasses, Grids, IB, IBQuery, frmuDlgClass;
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, ComCtrls, ExtCtrls, zluibcClasses, Grids, IB, IBQuery, frmuDlgClass,
+  FileUtil;
 
 type
   TfrmDBRestore = class(TDialog)
@@ -88,7 +91,7 @@ type
 
     FSourceServerNode: TibcServerNode;
     function VerifyInputData(): boolean;
-    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+//    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
     FFileList: TStringList;
@@ -102,7 +105,7 @@ implementation
 uses zluGlobal, zluPersistent, frmuServerRegister,IBServices,frmuMessage,
   frmuMain, zluUtility, dmuMain, zluContextHelp, IBErrorCodes;
 
-{$R *.DFM}
+{$R *.lfm}
 
 const
   OPTION_NAME_COL = 0;
@@ -372,7 +375,7 @@ begin
       lSaveDialog.Options := [ofHideReadOnly,ofEnableSizing];
       if lSaveDialog.Execute then
       begin
-        if FileExists(lSaveDialog.FileName) then
+        if FileExistsUTF8(lSaveDialog.FileName) { *Converted from FileExists* } then
         begin
           if MessageDlg(Format('OK to overwrite %s', [lSaveDialog.FileName]),
               mtConfirmation, mbYesNoCancel, 0) <> idYes then

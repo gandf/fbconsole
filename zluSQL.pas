@@ -830,7 +830,7 @@ begin
         actInput:
         begin
           try
-            AssignFile(InputFile, IsqlValue);
+            AssignFile(InputFile, string(IsqlValue));
             Reset (InputFile);
             NewSource := TStringList.Create;
             while not SeekEof(InputFile) do

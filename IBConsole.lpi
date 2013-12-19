@@ -56,7 +56,9 @@
       <Unit2>
         <Filename Value="frmuAbout.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmAbout"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
         <UnitName Value="frmuAbout"/>
       </Unit2>
       <Unit3>
@@ -236,7 +238,9 @@
       <Unit33>
         <Filename Value="frmuDlgClass.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="Dialog"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
         <UnitName Value="frmuDlgClass"/>
       </Unit33>
       <Unit34>

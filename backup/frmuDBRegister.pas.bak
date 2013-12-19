@@ -35,11 +35,13 @@
 
 unit frmuDBRegister;
 
+{$MODE Delphi}
+
 interface
 
 uses
   SysUtils, Forms, ExtCtrls, StdCtrls, Classes, Controls, Dialogs,
-  Windows, zluibcClasses, Messages, frmuDlgClass;
+  LCLIntf, LCLType, LMessages, zluibcClasses, Messages, frmuDlgClass;
 
 type
   TfrmDBRegister = class(TDialog)
@@ -76,7 +78,7 @@ type
     { Private declarations }
     FCurrSelServer : TibcServerNode;
     function VerifyInputData(): boolean;
-    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+//    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
   end;
@@ -92,7 +94,7 @@ implementation
 uses
    IBServices, frmuMessage, zluGlobal, zluContextHelp, zluUtility, zluPersistent;
 
-{$R *.DFM}
+{$R *.lfm}
 
 {****************************************************************
 *
@@ -177,7 +179,7 @@ function TfrmDBRegister.FormHelp(Command: Word; Data: Integer;
 begin
   CallHelp := False;
   // call WinHelp and show Register Database topic
-  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_REGISTER);
+//  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_REGISTER);
 end;
 
 procedure TfrmDBRegister.btnCancelClick(Sender: TObject);
