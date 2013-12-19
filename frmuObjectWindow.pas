@@ -19,12 +19,14 @@
 
 unit frmuObjectWindow;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ToolWin, ComCtrls, ImgList, Buttons, Grids, DBGrids,
-  ActnList, Db, ExtCtrls, IBDatabase, IBCustomDataset, DBCtrls,
+  ActnList, Db, ExtCtrls, IBDatabase, IBCustomDataSet, DBCtrls,
   IBTable;
 
 type
@@ -235,7 +237,7 @@ uses
   frmuMessage, frmuDisplayBlob, frmuDispMemo, dmuMain,
   zluUtility, zluGlobal, IBSQL, IBExtract, frmuMain, filectrl, zluPersistent;
 
-{$R *.DFM}
+{$R *.lfm}
 
 const
   TAB_DOMAIN = 0;

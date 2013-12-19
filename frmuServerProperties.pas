@@ -18,11 +18,13 @@
 }
 unit frmuServerProperties;
 
+{$MODE Delphi}
+
 interface
 
 uses
   Forms, ExtCtrls, StdCtrls, Classes, Controls, SysUtils, zluibcClasses,
-  ComCtrls, Graphics, IBServices, frmuMessage, IB, Windows,
+  ComCtrls, Graphics, IBServices, frmuMessage, IB, LCLIntf, LCLType, LMessages,
   Messages, zluContextHelp, frmuDlgClass;
 
 type
@@ -90,7 +92,7 @@ uses
   zluGlobal, frmuMain, IBDatabase, frmuDBConnections, IBHeader, IBErrorCodes,
   zluPersistent;
 
-{$R *.DFM}
+{$R *.lfm}
 
 const
   LIC_A_BIT=0;

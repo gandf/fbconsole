@@ -20,10 +20,12 @@
 
 unit IBExtract;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, IBDatabase, IBDatabaseInfo,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, IBDatabase, IBDatabaseInfo,
   IBSQL, IBUtils, IBHeader, IB, IBIntf;
 
 type

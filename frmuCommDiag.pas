@@ -36,10 +36,12 @@
 
 unit frmuCommDiag;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, SysUtils,Forms, ExtCtrls, StdCtrls, Classes, Controls, ComCtrls, Dialogs,
+  LCLIntf, LCLType, LMessages, SysUtils,Forms, ExtCtrls, StdCtrls, Classes, Controls, ComCtrls, Dialogs,
   Graphics, zluibcClasses, zluCommDiag, Winsock, IB, ScktComp,
   IBDatabase, IBDatabaseInfo, Messages, frmuDlgClass;
 
@@ -130,7 +132,7 @@ implementation
 uses
    zluGlobal, zluPersistent, zluContextHelp, IBServices, frmuMessage;
 
-{$R *.DFM}
+{$R *.lfm}
 
 {****************************************************************
 *

@@ -19,10 +19,12 @@
 
 unit frmuTools;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   frmuDlgClass, StdCtrls, Buttons, ActnList;
 
 type
@@ -69,7 +71,7 @@ type
 
 implementation
 
-{$R *.DFM}
+{$R *.lfm}
 
 uses registry, zluGlobal, frmuAddTool;
 

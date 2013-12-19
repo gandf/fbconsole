@@ -19,11 +19,13 @@
 
 unit frmuDBConnections;
 
+{$MODE Delphi}
+
 interface
 
 uses
   Forms, ExtCtrls, StdCtrls, Classes, Controls, zluibcClasses, ComCtrls,
-  IBDatabase, SysUtils, IBDatabaseInfo, Windows, zluContextHelp,
+  IBDatabase, SysUtils, IBDatabaseInfo, LCLIntf, LCLType, LMessages, zluContextHelp,
   IBServices, IB, frmuMessage, Messages, frmuDlgClass;
 
 type
@@ -46,7 +48,7 @@ implementation
 uses
   zluGlobal, zluUtility;
 
-{$R *.DFM}
+{$R *.lfm}
 
 {****************************************************************
 *

@@ -19,6 +19,8 @@
 
 unit frmuDescription;
 
+{$MODE Delphi}
+
 interface
 
 uses
@@ -27,7 +29,7 @@ uses
 
 type
   TfrmDescription = class(TDialog)
-    reDescription: TRichEdit;
+    reDescription: TMemo;
     Button1: TButton;
     Button2: TButton;
   private
@@ -41,6 +43,6 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.lfm}
 
 end.

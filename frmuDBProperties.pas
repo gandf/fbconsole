@@ -34,10 +34,12 @@
 *****************************************************************}
 unit frmuDBProperties;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Forms, ExtCtrls, StdCtrls, Classes, Controls, zluibcClasses, ComCtrls,
+  LCLIntf, LCLType, LMessages, Forms, ExtCtrls, StdCtrls, Classes, Controls, zluibcClasses, ComCtrls,
   SysUtils, Dialogs, Grids, Graphics, Registry, IBDatabaseInfo, zluContextHelp,
   IBEvents, IBServices, frmuMessage, IB, IBDatabase, Db, IBCustomDataSet,
   IBQuery, Messages, frmuDlgClass;
@@ -113,7 +115,7 @@ implementation
 uses
   zluGlobal, zluUtility,frmuMain, IBErrorCodes;
 
-{$R *.DFM}
+{$R *.lfm}
 
 const
   OPTION_NAME_COL = 0;

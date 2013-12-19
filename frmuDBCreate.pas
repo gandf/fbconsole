@@ -36,11 +36,13 @@
 
 unit frmuDBCreate;
 
+{$MODE Delphi}
+
 interface
 
 uses
   SysUtils, Forms, ExtCtrls, StdCtrls, Classes, Controls, Dialogs,
-  zluibcClasses, Grids, Windows, Graphics, IB, IBDatabase, IBServices, Messages,
+  zluibcClasses, Grids, LCLIntf, LCLType, LMessages, Graphics, IB, IBDatabase, IBServices, Messages,
   frmuDlgClass;
 
 type
@@ -88,7 +90,7 @@ implementation
 
 uses zluGlobal,frmuMessage, zluContextHelp, zluUtility, zluPersistent;
 
-{$R *.DFM}
+{$R *.lfm}
 
 const
   OPTION_NAME_COL = 0;            // option name column position

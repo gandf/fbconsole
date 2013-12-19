@@ -40,11 +40,13 @@ exihibit this behavior so the problem can be here. }
 
 unit frmuDBBackup;
 
+{$MODE Delphi}
+
 interface
 
 uses                       
   SysUtils, Forms, ExtCtrls, StdCtrls, Classes, Controls, Dialogs, zluibcClasses,
-  Grids, Graphics, Windows, Comctrls, IB, Messages, frmuDlgClass;
+  Grids, Graphics, LCLIntf, LCLType, LMessages, Comctrls, IB, Messages, frmuDlgClass, FileUtil;
 
 type
   TfrmDBBackup = class(TDialog)
@@ -102,7 +104,7 @@ implementation
 uses zluGlobal, frmuServerRegister, IBServices, frmuMessage,
   frmuMain, zluUtility, zluContextHelp, IBErrorCodes;
 
-{$R *.DFM}
+{$R *.lfm}
 
 const
   OPTION_NAME_COL = 0;
@@ -434,7 +436,7 @@ begin
       lSaveDialog.Options := [ofHideReadOnly,ofEnableSizing];
       if lSaveDialog.Execute then
       begin
-        if FileExists(lSaveDialog.FileName) then
+        if FileExistsUTF8(lSaveDialog.FileName) { *Converted from FileExists* } then
         begin
           if MessageDlg(Format('OK to overwrite %s', [lSaveDialog.FileName]),
               mtConfirmation, mbYesNoCancel, 0) <> idYes then

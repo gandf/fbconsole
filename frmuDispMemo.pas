@@ -19,10 +19,12 @@
 
 unit frmuDispMemo;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ComCtrls, DBCtrls, DB, IBCustomDataSet, frmuDlgClass;
 
 type
@@ -40,7 +42,7 @@ type
 
 implementation
 
-{$R *.DFM}
+{$R *.lfm}
 var
   frmDispMemo: TFrmDispMemo;
 

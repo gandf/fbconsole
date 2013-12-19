@@ -19,10 +19,12 @@
 
 unit frmuAddTool;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   frmuDlgClass, StdCtrls;
 
 type
@@ -49,7 +51,7 @@ implementation
 
 uses zluGlobal;
 
-{$R *.DFM}
+{$R *.lfm}
 
 procedure TfrmAddTools.btnBrowseClick(Sender: TObject);
 var

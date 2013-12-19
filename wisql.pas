@@ -19,13 +19,15 @@
 
 unit wisql;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   Menus, ComCtrls, ToolWin, ExtCtrls, StdCtrls, Grids, DBGrids,
-  Db, ImgList, StdActns, ActnList, zluibcClasses, IB, IBDatabase, IBCustomDataset,
-  zluSQL, MemoLists;
+  Db, ImgList, StdActns, ActnList, zluibcClasses, IB, IBDatabase, IBCustomDataSet,
+  zluSQL, MemoLists, FileUtil;
 
 type
 
@@ -258,7 +260,7 @@ uses frmuMessage, zluGlobal, frmuSQLOptions, frmuDisplayBlob,
 
 const
   OBJECTNAME = '\ISQL';
-{$R *.DFM}
+{$R *.lfm}
 
 procedure TdlgWisql.UpdateTransactionStatus(const active: boolean);
 begin
@@ -317,7 +319,7 @@ begin
     lSaveDialog.Filter := 'SQL Files (*.sql)|*.SQL|Text files (*.txt)|*.TXT|All files (*.*)|*.*';
     if lSaveDialog.Execute then
     begin
-      if FileExists(lSaveDialog.FileName) then
+      if FileExistsUTF8(lSaveDialog.FileName) { *Converted from FileExists* } then
         if MessageDlg(Format('OK to overwrite %s', [lSaveDialog.FileName]),
           mtConfirmation, mbYesNoCancel, 0) <> idYes then Exit;
       reSQLInput.PlainText := true;

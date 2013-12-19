@@ -16,10 +16,12 @@
 
 unit frmuMessage;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ExtCtrls, frmuDlgClass;
 
 type
@@ -130,9 +132,9 @@ Const
 
 implementation
 
-uses zluUtility, ibErrorCodes;
+uses zluUtility, IBErrorCodes;
 
-{$R *.DFM}
+{$R *.lfm}
 
 {****************************************************************
 *

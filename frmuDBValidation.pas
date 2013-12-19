@@ -34,10 +34,12 @@
 *****************************************************************}
 unit frmuDBValidation;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ExtCtrls, ComCtrls, zluibcClasses, zluContextHelp, IBServices, IB,
   Grids, frmuDlgClass;
 
@@ -76,7 +78,7 @@ implementation
 uses zluGlobal, zluUtility, frmuMessage, frmuDBValidationReport,
      fileCtrl, frmuMain, IBErrorCodes;
 
-{$R *.DFM}
+{$R *.lfm}
 
 const
   OPTION_NAME_COL = 0;

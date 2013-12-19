@@ -19,10 +19,12 @@
 
 unit frmuWindowList;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   frmuDlgClass, StdCtrls;
 
 type
@@ -44,7 +46,7 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.lfm}
 
 procedure TdlgWindowList.btnSwitchClick(Sender: TObject);
 var

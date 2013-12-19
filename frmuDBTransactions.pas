@@ -34,10 +34,12 @@
 *****************************************************************}
 unit frmuDBTransactions;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, zluibcClasses, StdCtrls, ComCtrls, ExtCtrls, IBServices,
   IB, ImgList, frmuDlgClass;
 
@@ -82,7 +84,7 @@ implementation
 uses
   zluGlobal, zluUtility, zluContextHelp, frmuMessage, frmuMain, IBErrorCodes;
 
-{$R *.DFM}
+{$R *.lfm}
 
 {****************************************************************
 *

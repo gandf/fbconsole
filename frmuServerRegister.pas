@@ -35,10 +35,12 @@
 
 unit frmuServerRegister;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ExtCtrls, IBServices, frmuDlgClass;
 
 type
@@ -83,7 +85,7 @@ implementation
 uses
   frmuMessage, zluGlobal, zluContextHelp, zluUtility;
 
-{$R *.DFM}
+{$R *.lfm}
 
 
 {****************************************************************

@@ -19,11 +19,13 @@
 
 unit frmuDisplayBlob;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  ExtCtrls, dbTables, IBCustomDataset, DB, frmuDlgClass;
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  ExtCtrls, sqldb, IBCustomDataSet, DB, frmuDlgClass;
 
 type
   TfrmDisplayBlob = class(TDialog)
@@ -40,10 +42,10 @@ type
 
  implementation
 
-{$R *.DFM}
+{$R *.lfm}
 
 uses
-  frmuMessage, jpeg;
+  frmuMessage;
 
 var
   frmDispBlob: TFrmDisplayBlob;

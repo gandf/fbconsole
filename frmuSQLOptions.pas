@@ -19,10 +19,12 @@
 
 unit frmuSQLOptions;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   frmuDlgClass, StdCtrls, ExtCtrls, Grids, ComCtrls;
 
 type
@@ -70,7 +72,7 @@ implementation
 
 uses zluGlobal;
 
-{$R *.DFM}
+{$R *.lfm}
 const
   OPTION_NAME_COL = 0;
   OPTION_VALUE_COL = 1;

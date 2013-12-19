@@ -18,12 +18,15 @@
 }
 
 unit frmuMain;
+
+{$MODE Delphi}
+
 interface
 
-uses Windows, Classes, Graphics, Forms, Controls, Menus, Dialogs, StdCtrls,
+uses LCLIntf, LCLType, LMessages, Classes, Graphics, Forms, Controls, Menus, Dialogs, StdCtrls,
   Buttons, ExtCtrls, ComCtrls, ImgList, ToolWin, Grids, DBGrids, DBCtrls,
   Registry, zluibcClasses, IBServices, IB, Messages, SysUtils,
-  RichEdit, DB, IBCustomDataSet, IBSQL, IBQuery, IBHeader, IBDatabase,
+  RichEdit, DB, IBHeader, sqldb,
   IBDatabaseInfo, frmuDlgClass, ActnList, StdActns, wisql, frmuObjectWindow,
   IBExtract, AppEvnts, zluPersistent;
 
@@ -426,7 +429,7 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.lfm}
 
 uses frmuAbout,zluGlobal,frmuUser,frmuDBRegister,frmuServerRegister,dmuMain,
   frmuDBConnect,frmuServerLogin,zluUtility,frmuMessage,
@@ -435,7 +438,7 @@ uses frmuAbout,zluGlobal,frmuUser,frmuDBRegister,frmuServerRegister,dmuMain,
   frmuDBCreate,frmuDBConnections,frmuDBValidation,frmuDBShutdown,
   frmuCommDiag, zluContextHelp, frmuDBTransactions,
   frmuDBStatistics, frmuDispMemo, frmuModifyServerAlias, zluSQL, frmuDisplayBlob,
-  dbTables, frmuTools, frmuDescription, frmuWindowList, CommCtrl, IBErrorCodes;
+  frmuTools, frmuDescription, frmuWindowList, CommCtrl, IBErrorCodes;
 
 const
   ACTIONS = 0;

@@ -16,12 +16,14 @@
 
 unit dmuMain;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, IBCustomDataSet, IBQuery, IBDatabase, Db, IB, zluibcClasses,
-  DBTables, IBTable, StdCtrls, IBHEADER, IBServices, Grids, DBGrids, IBSql,
+  sqldb, IBTable, StdCtrls, IBHeader, IBServices, Grids, DBGrids, IBSQL,
   IBDatabaseInfo;
 
 type
@@ -68,7 +70,7 @@ implementation
 uses
   zluGlobal, frmuMessage, zluUtility, frmuDBConnect, IBExtract;
 
-{$R *.DFM}
+{$R *.lfm}
 
 {****************************************************************
 *

@@ -36,10 +36,12 @@
 *****************************************************************}
 unit zluCommDiag;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   Winsock, PSock, Math;
 
 type
@@ -813,9 +815,7 @@ begin
     // poll until a connection is established or the max number of tries have exceeded
     while (not iSuccess) and (iNum < FTotal) do
     begin
-      hPipe := CreateFile(pPipe, GENERIC_READ or GENERIC_WRITE,
-			  FILE_SHARE_READ or FILE_SHARE_WRITE, @FSA,
-			  OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
+      hPipe := FileCreate(pPipe); { *Converted from CreateFile* }
 
       if hPipe <> INVALID_HANDLE_VALUE then
       begin
@@ -849,7 +849,7 @@ begin
     end;
   finally
     if iSuccess then
-      CloseHandle(hPipe);
+      FileClose(hPipe); { *Converted from CloseHandle* }
 
     Result := iSuccess;
   end;

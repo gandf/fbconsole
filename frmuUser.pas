@@ -35,10 +35,12 @@
 
 unit frmuUser;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, SysUtils, Forms, ExtCtrls, StdCtrls, Classes, Controls, Dialogs,
+  LCLIntf, LCLType, LMessages, SysUtils, Forms, ExtCtrls, StdCtrls, Classes, Controls, Dialogs,
   IBServices, zluibcClasses, Graphics, Messages, frmuDlgClass, ActnList;
 
 type
@@ -109,7 +111,7 @@ implementation
 uses
   IB, frmuMessage, zluGlobal, zluContextHelp, zluUtility, frmuMain, IBErrorCodes;
 
-{$R *.DFM}
+{$R *.lfm}
 
 const
   DUMMY_PASSWORD = 'TheyKilledKennyAgain';

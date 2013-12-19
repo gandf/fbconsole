@@ -35,10 +35,12 @@
 
 unit zluibcClasses;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Forms, SysUtils, Classes, WinTypes, WinProcs, CommCtrl, IBDatabase, IB,
+  Forms, SysUtils, Classes, LCLIntf, LCLType, LMessages, IBDatabase, IB,
   IBServices, IBSQL, DB, IBCustomDataSet, Controls, frmuObjectWindow, zluGlobal,
   frmuTextViewer;
 

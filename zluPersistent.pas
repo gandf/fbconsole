@@ -18,6 +18,9 @@
 }
 
 unit zluPersistent;
+
+{$MODE Delphi}
+
 { This unit is going to be used to group together access to registry
   and alternatively to XML file. It shall step by step incorporate more and more
   like Aliases, AppSessings etc until all references to registry are done through
@@ -26,7 +29,7 @@ unit zluPersistent;
 interface
 
 uses
-  Windows, SysUtils, Classes, Registry, Forms,
+  LCLIntf, LCLType, LMessages, SysUtils, Classes, Registry, Forms,
   IBServices,
   zluGlobal;
 

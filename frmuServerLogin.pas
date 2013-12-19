@@ -19,10 +19,12 @@
 
 unit frmuServerLogin;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, SysUtils, Forms, ExtCtrls, StdCtrls, Classes, Controls,
+  LCLIntf, LCLType, LMessages, SysUtils, Forms, ExtCtrls, StdCtrls, Classes, Controls,
   Messages, zluibcClasses, IB, frmuDlgClass;
 
 type
@@ -54,9 +56,9 @@ function ServerLogin(var CurrSelServer: TibcServerNode; const SilentLogin: boole
 
 implementation
 
-uses zluGlobal, frmuMessage, zluContextHelp, iberrorcodes;
+uses zluGlobal, frmuMessage, zluContextHelp, IBErrorCodes;
 
-{$R *.DFM}
+{$R *.lfm}
 
 function TfrmServerLogin.FormHelp(Command: Word; Data: Integer;
   var CallHelp: Boolean): Boolean;

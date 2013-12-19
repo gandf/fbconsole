@@ -35,10 +35,12 @@
 
 unit frmuDBShutdown;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   zluibcClasses, StdCtrls, ComCtrls, ExtCtrls, IBServices, IB, Grids, frmuDlgClass;
 
 type
@@ -77,7 +79,7 @@ uses
   zluGlobal, zluUtility, frmuMessage, zluContextHelp, fileCtrl, IBErrorCodes,
   frmuMain;
 
-{$R *.DFM}
+{$R *.lfm}
 
 const
   OPTION_NAME_COL = 0;                 // option name column position

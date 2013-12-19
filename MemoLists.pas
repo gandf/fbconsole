@@ -19,6 +19,8 @@
 
 unit MemoLists;
 
+{$MODE Delphi}
+
 interface
 uses
   Classes, Contnrs;

@@ -19,10 +19,12 @@
 
 unit frmuModifyServerAlias;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   ExtCtrls, StdCtrls, frmuDlgClass;
 
 type
@@ -51,7 +53,7 @@ type
 
 implementation
 
-{$R *.DFM}
+{$R *.lfm}
 
 function DisplayModifyAlias (const aliasName: String; var server, username: String;
                              var protocol: integer;

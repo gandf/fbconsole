@@ -20,11 +20,13 @@
 
 unit zluUtility;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Controls, Forms, Dialogs, StdCtrls,
-  FileCtrl, Registry, IBDatabase, IBSQL;
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Controls, Forms, Dialogs, StdCtrls,
+  FileCtrl, FileUtil, Registry, IBDatabase, IBSQL;
 
 function CheckDirectory(Directory: string): boolean;
 function GetNewFileName(Directory: string; FileExtension: string): string;
@@ -51,12 +53,12 @@ uses
 
 function CheckDirectory(Directory: string): boolean;
 begin
-  if (Directory <> '') and not (DirectoryExists(Directory)) then
+  if (Directory <> '') and not (DirectoryExistsUTF8(Directory) { *Converted from DirectoryExists* }) then
   begin
     if MessageDlg(Format('The directory %s does not exist. Do you wish to create it?',[Directory]),
       mtConfirmation, [mbYes,mbNo], 0) = mrYes then
     begin
-      if not CreateDir(Directory) then
+      if not CreateDirUTF8(Directory) { *Converted from CreateDir* } then
       begin
         MessageDlg(Format('An error occurred while attemting to create directory %s. Operation cancelled.',[Directory]),
           mtInformation, [mbOk], 0);
@@ -78,7 +80,7 @@ var
 begin
   Randomize;
   lFileName := Format('%s%s%s',[Directory,Format('%-8.8d',[Random(99999999)]),FileExtension]);
-  while FileExists(lFileName) do
+  while FileExistsUTF8(lFileName) { *Converted from FileExists* } do
   begin
     lFileName := Format('%s%s%s',[Directory,Format('%-8.8d',[Random(99999999)]),FileExtension]);
   end;

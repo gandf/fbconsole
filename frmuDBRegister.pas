@@ -35,11 +35,13 @@
 
 unit frmuDBRegister;
 
+{$MODE Delphi}
+
 interface
 
 uses
   SysUtils, Forms, ExtCtrls, StdCtrls, Classes, Controls, Dialogs,
-  Windows, zluibcClasses, Messages, frmuDlgClass;
+  LCLIntf, LCLType, LMessages, zluibcClasses, Messages, frmuDlgClass;
 
 type
   TfrmDBRegister = class(TDialog)
@@ -92,7 +94,7 @@ implementation
 uses
    IBServices, frmuMessage, zluGlobal, zluContextHelp, zluUtility, zluPersistent;
 
-{$R *.DFM}
+{$R *.lfm}
 
 {****************************************************************
 *

@@ -35,11 +35,13 @@
 
 unit frmuBackupAliasProperties;
 
+{$MODE Delphi}
+
 interface
 
 uses
   Forms, ExtCtrls, StdCtrls, Classes, Controls, zluibcClasses, ComCtrls,
-  SysUtils, Grids, Dialogs, Registry, Windows, Messages, frmuDlgClass;
+  SysUtils, Grids, Dialogs, Registry, LCLIntf, LCLType, LMessages, Messages, frmuDlgClass;
 
 type
   TfrmBackupAliasProperties = class(TDialog)
@@ -88,7 +90,7 @@ implementation
 uses
   zluGlobal, zluUtility, frmuMain, frmuMessage, zluContextHelp;
 
-{$R *.DFM}
+{$R *.lfm}
 
 {****************************************************************
 *

@@ -16,10 +16,12 @@
 
 unit zluGlobal;
 
+{$MODE Delphi}
+
 interface
 
 Uses
-  Windows, Graphics, classes;
+  LCLIntf, LCLType, LMessages, Graphics, classes;
 type
   TAppSetting = record
     Name: String;

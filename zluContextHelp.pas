@@ -25,6 +25,9 @@
 *****************************************************************}
 
 Unit zluContextHelp;
+
+{$MODE Delphi}
+
   Interface
     Const
       SQL_REFERENCE = 'sqlref.hlp';

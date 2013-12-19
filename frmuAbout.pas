@@ -32,10 +32,12 @@
 *****************************************************************}
 unit frmuAbout;
 
+{$MODE Delphi}
+
 interface
 
-uses WinTypes, WinProcs, Classes, Forms, Controls, StdCtrls,
-  Buttons, ExtCtrls, Graphics, frmuDlgClass, SYSUtils, jpeg;
+uses LCLIntf, LCLType, LMessages, Classes, Forms, Controls, StdCtrls,
+  Buttons, ExtCtrls, Graphics, frmuDlgClass, FileUtil, SYSUtils;
 
 type
   TfrmAbout = class(TDialog)
@@ -61,9 +63,9 @@ procedure ShowAboutDialog(ProductName, ProductVersion: string);
 
 implementation
 
-uses zluGlobal, ShellApi; //, URLMon;
+uses zluGlobal; //, URLMon;
 
-{$R *.DFM}
+{$R *.lfm}
 
 const
   BUILDSTR = 'Build %d %s';
@@ -149,7 +151,7 @@ begin
   Path := tmpBuffer + '\gds32.dll';
 
   // Check to see if it exists
-  if FileExists(Path) then
+  if FileExistsUTF8(Path) { *Converted from FileExists* } then
   begin
     GetFileVersion(Path, V1, V2, V3, V4);
 //    stxIBVer.Caption := Format('Version: %d.%d.%d.%d', [V1, V2, V3, V4]);
@@ -193,7 +195,7 @@ end;
 procedure TfrmAbout.stxhttpLinkClick(Sender: TObject);
 begin
   inherited;
-  ShellExecute (0, 'open', PChar((Sender as TStaticText).Caption), '', '', SW_SHOWNORMAL);
+   OpenDocument(PChar((Sender as TStaticText).Caption)); { *Converted from ShellExecute* }
 end;
 
 end.

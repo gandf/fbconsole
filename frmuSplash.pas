@@ -34,11 +34,13 @@
 
 unit frmuSplash;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  ExtCtrls, jpeg;
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  ExtCtrls;
 
 type
   TfrmSplash = class(TForm)
@@ -54,5 +56,5 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.lfm}
 end.
