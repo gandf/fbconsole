@@ -42,7 +42,7 @@ interface
 uses
   Forms, SysUtils, Classes, LCLIntf, LCLType, LMessages, IBDatabase, IB,
   IBServices, IBSQL, DB, IBCustomDataSet, Controls, frmuObjectWindow, zluGlobal,
-  frmuTextViewer,ComCtrls ,StdCtrls;
+  frmuTextViewer, ComCtrls ;
 
 type
 
