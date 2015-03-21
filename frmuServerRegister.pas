@@ -73,7 +73,7 @@ type
     { Private declarations }
     FAction: word;
     function VerifyInputData(): boolean;
-//    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+//    procedure LMLButtonDown( var Message: TLMLButtonDown ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
   end;
@@ -381,17 +381,17 @@ begin
   end;  
 end;
 
-{procedure TfrmServerRegister.WMNCLButtonDown( var Message: TWMNCLButtonDown );
+{procedure TfrmServerRegister.LMLButtonDown( var Message: TLMLButtonDown );
 var
   ScreenPt: TPoint;
   ClientPt: TPoint;
 begin
-  ScreenPt.X := Message.XCursor;
-  ScreenPt.Y := Message.YCursor;
+  ScreenPt.X := Message.XPos;
+  ScreenPt.Y := Message.YPos;
   ClientPt := ScreenToClient( ScreenPt );
   if( ClientPt.X > Width-45 )and (ClientPt.X < Width-29) then
    begin
-    WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_REGISTER);
+    //WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_REGISTER);
     Message.Result := 0;
   end else
    inherited;

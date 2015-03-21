@@ -24,10 +24,10 @@ unit frmuObjectWindow;
 interface
 
 uses
-  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Interfaces, Forms, Dialogs,
   StdCtrls, ToolWin, ComCtrls, ImgList, Buttons, Grids, DBGrids,
-  ActnList, Db, ExtCtrls, IBDatabase, IBCustomDataSet, DBCtrls,
-  IBTable, RichBox;
+  ActnList, Db, ExtCtrls, IBDatabase, IBCustomDataSet, dbctrls,
+  IBTable, RichBox, CommCtrl;
 
 type
   TTblData = class
@@ -468,8 +468,9 @@ begin
   begin
     Database := FDatabase;
     Transaction := FTransaction;
-    ObjectView := true;
-    SparseArrays := true;
+
+//    ObjectView := true;
+//    SparseArrays := true;
   end;
 end;
 
@@ -1057,7 +1058,7 @@ begin
     begin
       loListColumn := ListObject.Columns.Add;
       loListColumn.Caption := GetNextField(lsCurrLine, DEL);
-      loListColumn.Width := ColumnHeaderWidth;
+      loListColumn.Width := LVSCW_AUTOSIZE_USEHEADER;
     end;
 
     for i := 1  to StringList.Count - 1 do

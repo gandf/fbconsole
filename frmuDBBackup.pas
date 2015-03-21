@@ -89,7 +89,7 @@ type
     FSourceDatabaseNode: TibcDatabaseNode;
     FBackupFiles: TStringList;
     function VerifyInputData(): boolean;
-    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+    procedure LMLButtonDown( var Message: TLMLButtonDown ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
   end;
@@ -343,7 +343,7 @@ begin
 
   if (cbBackupAlias.ItemIndex > -1) and (Assigned(cbBackupAlias.Items.Objects[cbBackupAlias.ItemIndex])) then
   begin
-    lCurrBackupAliasNode := frmMain.tvMain.Items.GetNode(TibcBackupAliasNode(cbBackupAlias.Items.Objects[cbBackupAlias.ItemIndex]).NodeID);
+    lCurrBackupAliasNode := frmMain.tvMain.Items[TibcBackupAliasNode(cbBackupAlias.Items.Objects[cbBackupAlias.ItemIndex]).NodeID];
     for i := 1 to TibcBackupAliasNode(lCurrBackupAliasNode.Data).BackupFiles.Count do
     begin
       lCurrLine := TibcBackupAliasNode(lCurrBackupAliasNode.Data).BackupFiles.Strings[i-1];
@@ -385,7 +385,7 @@ begin
 
   if cbBackupServer.ItemIndex <> -1 then
   begin
-    lCurrBackupAliasesNode := frmMain.tvMain.Items.GetNode(TibcServerNode(cbBackupServer.Items.Objects[cbBackupServer.ItemIndex]).BackupFilesID);
+    lCurrBackupAliasesNode := frmMain.tvMain.Items[TibcServerNode(cbBackupServer.Items.Objects[cbBackupServer.ItemIndex]).BackupFilesID];
 
     // check if there are any backup aliases before trying to add to combo box
     if Assigned(lCurrBackupAliasesNode) then
@@ -954,7 +954,7 @@ begin
     frmDBBackup.FSourceDatabaseNode := SourceDatabaseNode;
     frmDBBackup.FBackupFiles := BackupFiles;
     frmDBBackup.stxDatabaseServer.Caption := SourceServerNode.NodeName;
-    lCurrDatabasesNode := frmMain.tvMain.Items.GetNode(SourceServerNode.DatabasesID);
+    lCurrDatabasesNode := frmMain.tvMain.Items[SourceServerNode.DatabasesID];
 
     for i := 1 to TibcTreeNode(lCurrDatabasesNode.Data).ObjectList.Count - 1 do
     begin
@@ -1006,17 +1006,17 @@ begin
   end;
 end;
 
-procedure TfrmDBBackup.WMNCLButtonDown( var Message: TWMNCLButtonDown );
+procedure TfrmDBBackup.LMLButtonDown( var Message: TLMLButtonDown );
 var
   ScreenPt: TPoint;
   ClientPt: TPoint;
 begin
-  ScreenPt.X := Message.XCursor;
-  ScreenPt.Y := Message.YCursor;
+  ScreenPt.X := Message.XPos;
+  ScreenPt.Y := Message.YPos;
   ClientPt := ScreenToClient( ScreenPt );
   if( ClientPt.X > Width-45 )and (ClientPt.X < Width-29) then
    begin
-    WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_BACKUP);
+    //WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_BACKUP);
     Message.Result := 0;
   end else
    inherited;

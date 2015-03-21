@@ -97,7 +97,7 @@ type
     FOriginalSQLDialect: String;
     FAliaschanged: boolean;
     function  VerifyInputData(): boolean;
-    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+    procedure LMLButtonDown( var Message: TLMLButtonDown ); message WM_NCLBUTTONDOWN ;
   public
     sOriginalForcedWrites: string;
     sOriginalReadOnly: string;
@@ -193,7 +193,7 @@ function TfrmDBProperties.FormHelp(Command: Word; Data: Integer;
   var CallHelp: Boolean): Boolean;
 begin
   CallHelp := False;
-  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_PROPERTIES);
+  //Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_PROPERTIES);
 end;
 
 {****************************************************************
@@ -1042,17 +1042,17 @@ begin
   edtFilename.Hint := edtFilename.Text;
 end;
 
-procedure TfrmDBProperties.WMNCLButtonDown( var Message: TWMNCLButtonDown );
+procedure TfrmDBProperties.LMLButtonDown( var Message: TLMLButtonDown );
 var
   ScreenPt: TPoint;
   ClientPt: TPoint;
 begin
-  ScreenPt.X := Message.XCursor;
-  ScreenPt.Y := Message.YCursor;
+  ScreenPt.X := Message.XPos;
+  ScreenPt.Y := Message.YPos;
   ClientPt := ScreenToClient( ScreenPt );
   if( ClientPt.X > Width-45 )and (ClientPt.X < Width-29) then
    begin
-    WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_PROPERTIES);
+    //WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_PROPERTIES);
     Message.Result := 0;
   end else
    inherited;

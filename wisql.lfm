@@ -68,7 +68,7 @@ object dlgWisql: TdlgWisql
     object TabResults: TTabSheet
       Caption = 'Plan'
       ImageIndex = 1
-      object reSqlOutput: TRichEdit
+      object reSqlOutput: TlzRichEdit
         Left = 0
         Top = 0
         Width = 626
@@ -120,7 +120,7 @@ object dlgWisql: TdlgWisql
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 1
-    object reSqlInput: TRichEdit
+    object reSqlInput: TlzRichEdit
       Left = 0
       Top = 0
       Width = 634
@@ -141,7 +141,6 @@ object dlgWisql: TdlgWisql
       WordWrap = False
       OnEnter = UpdateCursor
       OnKeyPress = reSqlInputKeyPress
-      OnSelectionChange = UpdateCursor
     end
     object stbISQL: TStatusBar
       Left = 0

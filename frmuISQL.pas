@@ -22,7 +22,7 @@ unit frmuISQL;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Windows, Messages, SysUtils, Classes, Interfaces, Graphics, Controls, Forms, Dialogs,
   ComCtrls, ToolWin, Menus, Grids, StdCtrls, DBGrids, ExtCtrls, ImgList,
   Db, IBCustomDataSet;
 
@@ -59,7 +59,7 @@ type
     CoolBar1: TCoolBar;
     imgToolBarsDisabled: TImageList;
     imgToolBarsEnabled: TImageList;
-    reSQLInput: TRichEdit;
+    reSQLInput: TlzRichEdit;
     Splitter1: TSplitter;
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
@@ -95,8 +95,8 @@ type
   private
     { Private declarations }
     procedure SetModified(IsModified: Boolean; IsReadOnly: boolean; StatusBar: TStatusBar);
-    procedure UpdateCursorPos(Editor: TRichEdit; StatusBar: TStatusBar);
-    procedure OpenFile(var Editor: TRichEdit; const sFileName: string);
+    procedure UpdateCursorPos(Editor: TlzRichEdit; StatusBar: TStatusBar);
+    procedure OpenFile(var Editor: TlzRichEdit; const sFileName: string);
   public
     { Public declarations }
   end;
@@ -182,7 +182,7 @@ begin
   end;
 end;
 
-procedure TfrmISQL.UpdateCursorPos(Editor: TRichEdit; StatusBar: TStatusBar);
+procedure TfrmISQL.UpdateCursorPos(Editor: TlzRichEdit; StatusBar: TStatusBar);
 var
   CharPos: TPoint;
 begin
@@ -205,7 +205,7 @@ begin
     StatusBar.Panels[1].Text := 'Read Only';
 end;
 
-procedure TfrmISQL.OpenFile(var Editor: TRichEdit;
+procedure TfrmISQL.OpenFile(var Editor: TlzRichEdit;
   const sFileName: string);
 begin
   try

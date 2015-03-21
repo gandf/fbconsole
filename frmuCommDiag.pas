@@ -42,16 +42,14 @@ interface
 
 uses
   LCLIntf, LCLType, LMessages, SysUtils,Forms, ExtCtrls, StdCtrls, Classes, Controls, ComCtrls, Dialogs,
-  Graphics, zluibcClasses, zluCommDiag, Winsock, IB, ScktComp,
-  IBDatabase, IBDatabaseInfo, Messages, frmuDlgClass;
+  Graphics, zluibcClasses, Winsock, IB,
+  IBDatabase, IBDatabaseInfo, Messages, frmuDlgClass, zluCommDiag; //, ScktComp;
 
 type
   TfrmCommDiag = class(TDialog)
     btnSelDB: TButton;
     cbDBServer: TComboBox;
-    cbNetBEUIServer: TComboBox;
     cbProtocol: TComboBox;
-    cbSPXServer: TComboBox;
     cbService: TComboBox;
     cbTCPIPServer: TComboBox;
     edtDatabase: TEdit;
@@ -59,32 +57,22 @@ type
     edtUsername: TEdit;
     gbDBServerInfo: TGroupBox;
     gbDatabaseInfo: TGroupBox;
-    gbNetBEUIServerInfo: TGroupBox;
-    gbNovellServerInfo: TGroupBox;
     gbTCPIPServerInfo: TGroupBox;
     lblDBResults: TLabel;
     lblDatabase: TLabel;
-    lblNetBEUIServer: TLabel;
-    lblNetBeuiResults: TLabel;
     lblPassword: TLabel;
     lblProtocol: TLabel;
-    lblSPXResults: TLabel;
-    lblSPXServer: TLabel;
     lblServerName: TLabel;
     lblService: TLabel;
     lblUsername: TLabel;
     lblWinSockResults: TLabel;
     lblWinsockServer: TLabel;
     memDBResults: TMemo;
-    memNetBeuiResults: TMemo;
-    memSPXResults: TMemo;
     memTCPIPResults: TMemo;
     pgcDiagnostics: TPageControl;
     rbLocalServer: TRadioButton;
     rbRemoteServer: TRadioButton;
     tabDBConnection: TTabSheet;
-    tabNetBEUI: TTabSheet;
-    tabSPX: TTabSheet;
     tabTCPIP: TTabSheet;
     pnlButtonBar: TPanel;
     btnTest: TButton;
@@ -106,10 +94,8 @@ type
     function VerifyInputData(): boolean;
     procedure PingServer;
     procedure TestDBConnect;
-    procedure TestNetBEUI;
     procedure TestPort(Port : String);
-    procedure TestSPX;
-    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+    procedure LMLButtonDown( var Message: TLMLButtonDown ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
   end;
@@ -217,12 +203,10 @@ end;
 function ServiceRunning(const CurrSelServer: TibcServerNode) : Boolean;
 var
   lPipe   : TibcPipes;
-  lSPX    : TibcSPX;
   lSocket : TibcSocket;
   lStr    : String;
 begin
   lPipe   := Nil;
-  lSPX    := Nil;
   lSocket := Nil;
   Result  := True;
   try
@@ -257,7 +241,6 @@ begin
     end;
   finally
     lPipe.Free;
-    lSPX.Free;
     lSocket.Free
   end;
 end;
@@ -451,32 +434,6 @@ begin
     end;
   end
 
-  // otherwise, if the NetBEUI tab is active
-  else if pgcDiagnostics.ActivePage = tabNetBEUI then
-  begin
-    // ensure that a server is specified
-    if (cbNetBEUIServer.Text = '') or (cbNetBEUIServer.Text = ' ') then
-    begin
-      DisplayMsg(ERR_SERVER_NAME,'');
-      cbNetBEUIServer.SetFocus;
-      result := false;
-      Exit;
-    end;
-  end
-
-  // otherwise if the SPX tab is active
-  else if pgcDiagnostics.ActivePage = tabSPX then
-  begin
-    // ensure that a server is specified
-    if (cbSPXServer.Text = '') or (cbSPXServer.Text = ' ') then
-    begin
-      DisplayMsg(ERR_SERVER_NAME,'');
-      cbSPXServer.SetFocus;
-      result := false;
-      Exit;
-    end;
-  end
-
   // otherwise if the TCP/IP tab is active
   else if pgcDiagnostics.ActivePage = tabTCPIP then
   begin
@@ -544,21 +501,6 @@ begin
         Ping       : PingServer;
       end;
     end;
-
-    // if NetBEUI is the active page
-    if pgcDiagnostics.ActivePage = tabNetBEUI then
-    begin
-      memNetBEUIResults.Lines.Clear;   // then clear the NetBEUI results
-      TestNetBEUI;                     // perform the NetBEUI test
-    end;
-
-    // if SPX is the active page
-    if pgcDiagnostics.ActivePage = tabSPX then
-    begin
-      memSPXResults.Lines.Clear;       // then clear the SPX results
-      TestSPX;
-    end;
-
   end;
 end;
 
@@ -867,7 +809,7 @@ begin
   try
     Sock:=TibcSocket.Create(Self);     // create socket
     Sock.Host := cbTCPIPServer.Text;  // set hostname
-    Sock.ReportLevel := 1;             // set report level
+//    Sock.ReportLevel := 1;             // set report level
     Sock.Timeout := 5000;              // set timeout
 
     with memTCPIPResults.Lines do
@@ -902,18 +844,11 @@ begin
         // connect to server via the specified service/port
         Sock.Connect;
       except
-        on E : ESocketError do
-        begin
-          // if a socket error occurs then set success flag to false
-          Add('Socket Error Trapped!');
-          iSuccess:=False;
-        end
-        else
+        on E : Exception  do
         begin
           // otherwise some other error occured
           Add('Failed to connect to host ''' + cbTCPIPServer.Text + ''',');
-          Add('on port ' + Port + '. Error Num: ' +
-              IntToStr(Sock.LastErrorNo) + '.');
+          Add('on port ' + Port + '. Error Message: ' + E.Message + '.');
           iSuccess:=False;
         end;
       end;
@@ -1002,8 +937,6 @@ begin
           FProtocols.Add(IntToStr(integer(sProps.Protocol)));
           cbDBServer.Items.Add(sProps.ServerName);
           cbTCPIPServer.Items.Add(sProps.ServerName);
-          cbNetBEUIServer.Items.Add(sProps.ServerName);
-          cbSPXServer.Items.Add(sProps.ServerName);
         end;
       end;
     end;
@@ -1019,103 +952,6 @@ begin
   FProtocols.Free;
 end;
 
-{****************************************************************
-*
-*  T e s t N e t B E U I
-*
-****************************************************************
-*  Author: The Client Server Factory Inc.
-*  Date:   March 1, 1999
-*
-*  Input:  None
-*
-*  Return: None
-*
-*  Description:  Creates a pipes object and performs a
-*                NetBEUI test using named pipes.
-*
-*****************************************************************
-* Revisions:
-*
-*****************************************************************}
-
-procedure TfrmCommDiag.TestNetBEUI;
-var
-  lPipe : TibcPipes;                   // named pipe
-  lStr : String;
-begin
-  lPipe := Nil;                        // initialize variables
-  lStr:='';
-  Screen.Cursor := crHourGlass;
-  try
-    lPipe := TibcPipes.Create;         // create pipe
-
-    // specify server name
-    lPipe.Server := cbNetBEUIServer.Text;
-    // specify pipe name
-    lPipe.Path := '\pipe\interbas\server\gds_db';
-    // specify number of attempts
-    lPipe.Tries := 5;
-
-    // test pipe
-    lPipe.TestPipe(lStr, False);
-
-    // assign results to NetBEUI results memo
-    memNetBEUIResults.SetTextBuf(PChar(lStr));
-  finally
-    // deallocate memery
-    lPipe.Free;
-    Screen.Cursor := crDefault;
-  end;
-end;
-
-{****************************************************************
-*
-*  T e s t S P X
-*
-****************************************************************
-*  Author: The Client Server Factory Inc.
-*  Date:   March 1, 1999
-*
-*  Input:  None
-*
-*  Return: None
-*
-*  Description:  Creates a SPX object and performs a
-*                test server connect using SPX.
-*
-*****************************************************************
-* Revisions:
-*
-*****************************************************************}
-
-procedure TfrmCommDiag.TestSPX;
-var
-  lspx : TibcSPX;
-  lStr : String;
-begin
-  lspx := Nil;                         // initialize variables
-  lStr:='';
-
-  Screen.Cursor := crHourGlass;
-
-  try
-    lspx := TibcSPX.Create;
-
-    // specify servername
-    lspx.ServerName:=cbSPXServer.Text;
-    // test SPX connection
-    lspx.TestSPX(lStr);
-
-    // assign results to SPX results memo
-    memSPXResults.SetTextBuf(PChar(lStr));
-  finally
-    // deallocate memory
-    lspx.Free;
-    Screen.Cursor := crDefault;
-  end;
-end;
-
 // assigns appropriate protocol for a selected server in the DB connection tab
 procedure TfrmCommDiag.cbDBServerClick(Sender: TObject);
 begin
@@ -1128,17 +964,17 @@ begin
   edtDatabase.Hint := edtDatabase.Text;
 end;
 
-procedure TfrmCommDiag.WMNCLButtonDown( var Message: TWMNCLButtonDown );
+procedure TfrmCommDiag.LMLButtonDown( var Message: TLMLButtonDown );
 var
   ScreenPt: TPoint;
   ClientPt: TPoint;
 begin
-  ScreenPt.X := Message.XCursor;
-  ScreenPt.Y := Message.YCursor;
+  ScreenPt.X := Message.XPos;
+  ScreenPt.Y := Message.YPos;
   ClientPt := ScreenToClient( ScreenPt );
   if( ClientPt.X > Width-45 )and (ClientPt.X < Width-29) then
    begin
-    WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,FEATURES_DIAGNOSTICS);
+    //WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,FEATURES_DIAGNOSTICS);
     Message.Result := 0;
   end else
    inherited;

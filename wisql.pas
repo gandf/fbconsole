@@ -24,7 +24,7 @@ unit wisql;
 interface
 
 uses
-  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Interfaces, Forms, Dialogs,
   Menus, ComCtrls, ToolWin, ExtCtrls, StdCtrls, Grids, DBGrids,
   Db, ImgList, StdActns, ActnList, zluibcClasses, IB, IBDatabase, IBCustomDataSet,
   zluSQL, MemoLists, FileUtil,RichBox;
@@ -178,6 +178,7 @@ type
     procedure SQLReference1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FileCloseExecute(Sender: TObject);
+    procedure PrintTStrings(Lst : TStrings);
     procedure Print1Click(Sender: TObject);
     procedure Drop1Click(Sender: TObject);
     procedure Disconnect1Click(Sender: TObject);
@@ -778,7 +779,7 @@ end;
 
 procedure TdlgWisql.EditFindUpdate(Sender: TObject);
 begin
-  (Sender as TAction).Enabled := (ActiveControl is TRichEdit);
+  (Sender as TAction).Enabled := (ActiveControl is TlzRichEdit);
 end;
 
 procedure TdlgWisql.QueryUpdate(Sender: TObject);
@@ -902,7 +903,7 @@ begin
     if reSqlInput.SelLength > 0 then
       reSqlInput.SelAttributes.Assign(FontDialog1.Font)
     else
-      reSqlInput.DefAttributes.Assign(FontDialog1.Font);
+      reSqlInput.Font.Assign(FontDialog1.Font);
   UpdateCursor(Self);
   reSqlInput.SetFocus;
 end;
@@ -922,7 +923,7 @@ var
 begin
   inherited;
   hlpPath := Format('%s%s',[ExtractFilePath(Application.ExeName), SQL_REFERENCE]);
-  WinHelp(WindowHandle, PChar(hlpPath),HELP_FINDER,0);
+  //WinHelp(WindowHandle, PChar(hlpPath),HELP_FINDER,0);
 end;
 
 procedure TdlgWisql.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -941,25 +942,48 @@ begin
   Self.Close;
 end;
 
+procedure TdlgWisql.PrintTStrings(Lst : TStrings);
+var
+  I,
+  Line : Integer;
+begin
+  I := 0;
+  Line := 0 ;
+  Printer.BeginDoc ;
+  for I := 0 to Lst.Count - 1 do begin
+    Printer.Canvas.TextOut(0, Line, Lst.Strings[I]);
+    {Font.Height is calculated as -Font.Size * 72 / Font.PixelsPerInch which returns
+     a negative number. So Abs() is applied to the Height to make it a non-negative
+     value}
+    Line := Line + Abs(Printer.Canvas.TextHeight('I'));
+    if (Line >= Printer.PageHeight) then
+      Printer.NewPage;
+  end;
+  Printer.EndDoc;
+end;
+
 procedure TdlgWisql.Print1Click(Sender: TObject);
 var
-  lPrintDialog: TPrintDialog;
+  lPrintDialog: TCustomPrintDialog;
   lLine: integer;
   lPrintText: TextFile;
+  lTexte: TStrings;
 begin
+  {
   lPrintDialog := nil;
-  if ActiveControl is TRichEdit then
+  if ActiveControl is TlzRichEdit then
   begin
     try
-      lPrintDialog := TPrintDialog.Create(Self);
+      lPrintDialog := TCustomPrintDialog.Create(Self);
       try
         if lPrintDialog.Execute then
         begin
-          AssignPrn(lPrintText);
+          lTexte.LoadFromFile(lPrintText);
+          PrintTStrings(lTexte);
           Rewrite(lPrintText);
-          Printer.Canvas.Font := (ActiveControl as TRichEdit).Font;
-          for lLine := 0 to (ActiveControl as TRichEdit).Lines.Count - 1 do
-            Writeln(lPrintText, (ActiveControl as TrichEdit).Lines[lLine]);
+          Printer.Canvas.Font := (ActiveControl as TlzRichEdit).Font;
+          for lLine := 0 to (ActiveControl as TlzRichEdit).Lines.Count - 1 do
+            Writeln(lPrintText, (ActiveControl as TlzRichEdit).Lines[lLine]);
           CloseFile(lPrintText);
         end;
       except on E: Exception do
@@ -968,7 +992,7 @@ begin
     finally
       lPrintDialog.free;
     end;
-  end;
+  end;   }
 end;
 
 procedure TdlgWisql.Drop1Click(Sender: TObject);
@@ -1368,7 +1392,7 @@ var
   FoundAt: LongInt;
   StartPos, ToEnd: Integer;
 begin
-  with ActiveControl as TRichEdit do
+  with ActiveControl as TlzRichEdit do
   begin
     if SelLength <> 0 then
       StartPos := SelStart + SelLength
@@ -1379,7 +1403,7 @@ begin
 
     ToEnd := Length(Text) - StartPos;
 
-    FoundAt := FindText(FindDialog1.FindText, StartPos, ToEnd, [stMatchCase]);
+    FoundAt := FindText(FindDialog1.FindText, StartPos, ToEnd, [stMatchCase], false);
     if FoundAt <> -1 then
     begin
       SetFocus;

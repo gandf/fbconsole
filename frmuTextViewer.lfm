@@ -78,7 +78,7 @@ object frmTextViewer: TfrmTextViewer
       Action = EditCopy1
     end
   end
-  object reEditor: TRichEdit
+  object reEditor: TlzRichEdit
     Left = 0
     Top = 31
     Width = 632
@@ -98,7 +98,6 @@ object frmTextViewer: TfrmTextViewer
     WordWrap = False
     OnEnter = reEditorEnter
     OnKeyPress = reEditorKeyPress
-    OnSelectionChange = reEditorEnter
   end
   object imgToolbarImages: TImageList
     Left = 90

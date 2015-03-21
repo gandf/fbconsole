@@ -42,7 +42,7 @@ function GetMIError: Integer;
 implementation
 
 const
-  UniqueAppStr : PChar = 'IBCONSOLE';
+  UniqueAppStr : PChar = 'FIREBIRDMANAGEMENTSTUDIO';
 
 var
   MessageId: Integer;

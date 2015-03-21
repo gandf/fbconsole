@@ -70,7 +70,7 @@ type
     { Private declarations }
     function VerifyInputData(): boolean;
     procedure SetEditorEnabled(const enable: boolean);
-    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+    procedure LMLButtonDown( var Message: TLMLButtonDown ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
   end;
@@ -289,7 +289,7 @@ begin
   btnApply.Enabled := true;
 end;
 
-procedure TfrmPreferences.WMNCLButtonDown( var Message: TWMNCLButtonDown );
+procedure TfrmPreferences.LMLButtonDown( var Message: TLMLButtonDown );
 var
   ScreenPt: TPoint;
   ClientPt: TPoint;

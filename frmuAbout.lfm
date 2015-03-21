@@ -1,10 +1,14 @@
 inherited frmAbout: TfrmAbout
   Left = 322
+  Height = 298
   Top = 244
+  Width = 417
   ActiveControl = Button1
   BorderIcons = []
   BorderStyle = bsSingle
-  Caption = 'About IBConsole'
+  Caption = 'About Firebird Management Studio'
+  ClientHeight = 298
+  ClientWidth = 417
   Font.CharSet = ANSI_CHARSET
   Font.Color = clBlack
   Font.Height = -14
@@ -534,7 +538,7 @@ inherited frmAbout: TfrmAbout
     Left = 18
     Height = 17
     Top = 227
-    Width = 81
+    Width = 225
     Caption = 'stxIBConsoleVer'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clBlack

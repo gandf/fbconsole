@@ -23,12 +23,12 @@ unit frmuMain;
 
 interface
 
-uses LCLIntf, LCLType, LMessages, Classes, Graphics, Forms, Controls, Menus, Dialogs, StdCtrls,
+uses LCLIntf, LCLType, LMessages, Classes, Graphics, Interfaces, Forms, Controls, Menus, Dialogs, StdCtrls,
   Buttons, ExtCtrls, ComCtrls, ImgList, ToolWin, Grids, DBGrids, DBCtrls,
   Registry, zluibcClasses, IBServices, IB, Messages, SysUtils,
   RichBox, DB, IBHeader, sqldb,
   IBDatabaseInfo, frmuDlgClass, ActnList, StdActns, wisql, frmuObjectWindow,
-  IBExtract, zluPersistent,IBQuery,IBDatabase,IBCustomDataSet;
+  IBExtract, zluPersistent,IBQuery,IBDatabase,IBCustomDataSet, IBSQL, Windows;
 
 type
   TfrmMain = class(TForm)
@@ -458,8 +458,8 @@ function IBConsoleWindowProc(WindowHandle : hWnd;
 begin
   if TheMessage = LongInt(IBConsole_msg)  then
   begin
-    SendMessage(Application.handle, WM_SYSCOMMAND, SC_RESTORE, 0);
-    SetForegroundWindow(Application.Handle);
+    SendMessage(Screen.ActiveForm.Handle, WM_SYSCOMMAND, SC_RESTORE, 0);
+    SetForegroundWindow(Screen.ActiveForm.Handle);
     Result := 0;
     exit;
   end;
@@ -656,7 +656,7 @@ begin
       begin
         if Assigned(lvObjects.Selected.Data) then
         begin
-          lTreeNode := tvMain.Items.GetNode(TTreeNode(lvObjects.Selected.Data).ItemID);
+          lTreeNode := tvMain.Items[TTreeNode(lvObjects.Selected.Data).Index];
           FCurrSelServer := TibcServerNode(lTreeNode.Data);
         end;
       end;
@@ -665,7 +665,7 @@ begin
       begin
         if Assigned(lvObjects.Selected.Data) then
         begin
-          lTreeNode := tvMain.Items.GetNode(TTreeNode(lvObjects.Selected.Data).ItemID);
+          lTreeNode := tvMain.Items[TTreeNode(lvObjects.Selected.Data).Index];
           FCurrSelServer := TibcServerNode(lTreeNode.Parent.Parent.Data);
           FCurrSelDatabase := TibcDatabaseNode(lTreeNode.Data);
         end;
@@ -675,7 +675,7 @@ begin
       begin
         if Assigned(lvObjects.Selected.Data) then
         begin
-          lTreeNode := tvMain.Items.GetNode(TTreeNode(lvObjects.Selected.Data).ItemID);
+          lTreeNode := tvMain.Items[TTreeNode(lvObjects.Selected.Data).Index];
           FCurrSelServer := TibcServerNode(lTreeNode.Parent.Parent.Data);
           FCurrSelTreeNode := TibcTreeNode(lTreeNode.Data);
         end
@@ -1030,7 +1030,7 @@ begin
   Result := True;
   if Assigned(SelServerNode) and Assigned(SelDatabaseNode) then begin
     if frmuDBConnect.DBConnect(SelDatabaseNode,SelServerNode,SilentLogin) then begin
-      lDatabaseNode := tvMain.Items.GetNode(SelDatabaseNode.NodeID);
+      lDatabaseNode := tvMain.Items[SelDatabaseNode.NodeID];
 
       if refresh then begin
         if not lDatabaseNode.HasChildren then
@@ -1145,7 +1145,7 @@ begin
   try
     Screen.Cursor := crHourGlass;
     lObjectList.AddObject('Name',nil);
-    lCurrParentNode := tvMain.Items.GetNode(SelServerNode.BackupFilesID);
+    lCurrParentNode := tvMain.Items[SelServerNode.BackupFilesID];
     lCurrChildNode := lCurrParentNode.GetFirstChild;
     while lCurrChildNode <> nil do
     begin
@@ -1239,7 +1239,7 @@ begin
   try
     Screen.Cursor := crHourGlass;
     lObjectList.AddObject(Format('Name%sPath',[DEL,DEL,DEL]),nil);
-    lCurrParentNode := tvMain.Items.GetNode(SelServerNode.DatabasesID);
+    lCurrParentNode := tvMain.Items[SelServerNode.DatabasesID];
     lCurrChildNode := lCurrParentNode.GetFirstChild;
     while lCurrChildNode <> nil do
     begin
@@ -1419,8 +1419,8 @@ var
 begin
   try
     tvMain.Items.BeginUpdate;
-    lBackupAliasNode := tvMain.Items.AddChild(tvMain.Items.GetNode(SelServerNode.BackupFilesID), '');
-    lBackupAliasNode.Data := TibcBackupAliasNode.Create(tvMain,lBackupAliasNode.ItemId,
+    lBackupAliasNode := tvMain.Items.AddChild(tvMain.Items[SelServerNode.BackupFilesID], '');
+    lBackupAliasNode.Data := TibcBackupAliasNode.Create(tvMain,lBackupAliasNode.Index,
       BackupAlias, Now, Now, NODE_BACKUP_ALIAS);
     lBackupAliasNode.Text := BackupAlias;
     lBackupAliasNode.SelectedIndex := NODE_BACKUP_ALIAS_IMG;
@@ -1486,8 +1486,8 @@ begin
     else
       tmpDatabase := FNILLDATABASE;
     tvMain.Items.BeginUpdate;
-    lDatabaseNode := tvMain.Items.AddChild(tvMain.Items.GetNode(SelServerNode.DatabasesID), '');
-    lDatabaseNode.Data := TibcDatabaseNode.Create(tvMain,lDatabaseNode.ItemId,DBAlias,
+    lDatabaseNode := tvMain.Items.AddChild(tvMain.Items[SelServerNode.DatabasesID], '');
+    lDatabaseNode.Data := TibcDatabaseNode.Create(tvMain,lDatabaseNode.Index,DBAlias,
       NODE_DATABASE,DatabaseFiles, tmpDatabase);
     lDatabaseNode.Text := TibcDatabaseNode(lDatabaseNode.Data).NodeName;
     FCurrSelDatabase := TibcDatabaseNode(lDatabaseNode.Data);
@@ -1500,7 +1500,7 @@ begin
     FCurrSelDatabase.CaseSensitiveRole := CaseSensitive;
     lDatabaseNode.SelectedIndex := NODE_DATABASES_DISCONNECTED_IMG;
     lDatabaseNode.ImageIndex := NODE_DATABASES_DISCONNECTED_IMG;
-    lCurrNode := tvMain.Items.GetNode(SelServerNode.DatabasesID);
+    lCurrNode := tvMain.Items[SelServerNode.DatabasesID];
     lCurrNode.expand(false);
     tvMain.Selected := lDatabaseNode;
 
@@ -1555,7 +1555,7 @@ begin
     lServerNode := tvMain.Items.AddChild(tvMain.Items[0], ServerAlias);
     if Protocol = Local then
       lServerNode.MoveTo(tvMain.Items[0],naAddChildFirst);
-    lServerNode.Data := TibcServerNode.Create(tvMain,lServerNode.ItemId,ServerAlias,ServerName,UserName,Password, Description,Protocol, LastAccess, NODE_SERVER);
+    lServerNode.Data := TibcServerNode.Create(tvMain,lServerNode.Index,ServerAlias,ServerName,UserName,Password, Description,Protocol, LastAccess, NODE_SERVER);
 
     lServerNode.SelectedIndex := 1;
     lServerNode.ImageIndex := 1;
@@ -1682,7 +1682,7 @@ begin
           lBackupFiles := TStringList.Create;
           lDatabaseFiles := TStringList.Create;
 
-          lServerNode := tvMain.Items.GetNode(FCurrSelServer.NodeID);
+          lServerNode := tvMain.Items[FCurrSelServer.NodeID];
           lServerNode.SelectedIndex := NODE_SERVERS_ACTIVE_IMG;
           lServerNode.ImageIndex := NODE_SERVERS_ACTIVE_IMG;
           lServerNode.Expand(True);
@@ -1697,24 +1697,24 @@ begin
           if not lServerNode.HasChildren then
           begin
           lCurrNode := tvMain.Items.AddChild(lServerNode, NODE_ARRAY[NODE_DATABASES]);
-          lCurrNode.Data := TibcTreeNode.Create(tvMain,lCurrNode.ItemID,'',NODE_DATABASES);
-          TibcServerNode(lServerNode.Data).DatabasesID := lCurrNode.ItemID;
+          lCurrNode.Data := TibcTreeNode.Create(tvMain,lCurrNode.Index,'',NODE_DATABASES);
+          TibcServerNode(lServerNode.Data).DatabasesID := lCurrNode.Index;
           lCurrNode.ImageIndex := NODE_DATABASES_IMG;
           lCurrNode.SelectedIndex := NODE_DATABASES_IMG;
 
           lCurrNode := tvMain.Items.AddChild(lServerNode, NODE_ARRAY[NODE_BACKUP_ALIASES]);
-          lCurrNode.Data := TibcTreeNode.Create(tvMain,lCurrNode.ItemID,'',NODE_BACKUP_ALIASES);
-          TibcServerNode(lServerNode.Data).BackupFilesID := lCurrNode.ItemID;
+          lCurrNode.Data := TibcTreeNode.Create(tvMain,lCurrNode.Index,'',NODE_BACKUP_ALIASES);
+          TibcServerNode(lServerNode.Data).BackupFilesID := lCurrNode.Index;
           lCurrNode.ImageIndex := NODE_BACKUP_ALIASES_IMG;
           lCurrNode.SelectedIndex := NODE_BACKUP_ALIASES_IMG;
 
           lCurrNode := tvMain.Items.AddChild(lServerNode, NODE_ARRAY[NODE_LOGS]);
-          lCurrNode.Data := TibcTreeNode.Create(tvMain,lCurrNode.ItemID,'',NODE_LOGS);
+          lCurrNode.Data := TibcTreeNode.Create(tvMain,lCurrNode.Index,'',NODE_LOGS);
           lCurrNode.ImageIndex := NODE_LOGS_IMG;
           lCurrNode.SelectedIndex := NODE_LOGS_IMG;
 
           lCurrNode := tvMain.Items.AddChild(lServerNode, NODE_ARRAY[NODE_USERS]);
-          lCurrNode.Data := TibcTreeNode.Create(tvMain,lCurrNode.ItemID,'',NODE_USERS);
+          lCurrNode.Data := TibcTreeNode.Create(tvMain,lCurrNode.Index,'',NODE_USERS);
           lCurrNode.ImageIndex := NODE_USERS_IMG;
           lCurrNode.SelectedIndex := NODE_USERS_IMG;
           end;
@@ -1913,7 +1913,7 @@ begin
     end;
     for i := 0 to lvObjects.Columns.Count -1 do
     begin
-      lvObjects.Columns[i].Width := ColumnHeaderWidth;     
+      lvObjects.Columns[i].AutoSize := true;
     end;
     lvObjects.Columns.EndUpdate;
     lvObjects.Items.EndUpdate;
@@ -1947,7 +1947,7 @@ var
   lCurrNode: TTreeNode;
 begin
   lCurrNode := tvMain.Items.GetFirstNode;
-  lCurrNode.Data := TibcTreeNode.Create(tvMain, lCurrNode.ItemID,'',NODE_SERVERS);
+  lCurrNode.Data := TibcTreeNode.Create(tvMain, lCurrNode.Index,'',NODE_SERVERS);
   lCurrNode.ImageIndex :=  0;
   lCurrNode.SelectedIndex := 0;
 end;
@@ -2096,7 +2096,7 @@ var
 
 begin
 
-  lSelTreeNode := tvMain.Items.GetNode(SelTreeNode.NodeID);
+  lSelTreeNode := tvMain.Items[SelTreeNode.NodeID];
   if SelTreeNode is TIBCServerNode then
   begin
     with TibcTreeNode(frmMain.tvMain.Items[0].Data).ObjectList do
@@ -2115,29 +2115,29 @@ end;
 
 procedure TfrmMain.mmiHeContentsClick(Sender: TObject);
 begin
-   WinHelp(Handle,CONTEXT_HELP_FILE,HELP_FINDER,0);
+   //WinHelp(Handle,CONTEXT_HELP_FILE,HELP_FINDER,0);
 end;
 
 procedure TfrmMain.mmiHeOverviewClick(Sender: TObject);
 begin
-  WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,GENERAL_OVERVIEW);
+  //WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,GENERAL_OVERVIEW);
 end;
 
 procedure TfrmMain.mmiHeUsingHelpClick(Sender: TObject);
 begin
-   WinHelp(Handle,CONTEXT_HELP_FILE,HELP_HELPONHELP,0);
+   //WinHelp(Handle,CONTEXT_HELP_FILE,HELP_HELPONHELP,0);
 end;
 
 procedure TfrmMain.mmiHeInterBaseHelpClick(Sender: TObject);
 begin
-   WinHelp(Handle,INTERBASE_HELP_FILE,HELP_FINDER,0);
+   //WinHelp(Handle,INTERBASE_HELP_FILE,HELP_FINDER,0);
 end;
 
 function TfrmMain.FormHelp(Command: Word; Data: Integer;
   var CallHelp: Boolean): Boolean;
 begin
   CallHelp := False;
-  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_FINDER,0);
+  //Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_FINDER,0);
 end;
 
 procedure TfrmMain.tvMainKeyPress(Sender: TObject; var Key: Char);
@@ -2267,68 +2267,68 @@ var
 
 begin
   lCurrNode := tvMain.Items.AddChild(Parent, NODE_ARRAY[Objtype]);
-  lCurrNode.Data := TibcTreeNode.Create(tvMain,lCurrNode.ItemID,'',ObjType);
+  lCurrNode.Data := TibcTreeNode.Create(tvMain,lCurrNode.Index,'',ObjType);
 
   case ObjType of
     NODE_DOMAINS:
     begin
       lCurrNode.ImageIndex := NODE_DOMAINS_IMG;
       lCurrNode.SelectedIndex := NODE_DOMAINS_IMG;
-      TibcDatabaseNode(Parent.Data).DomainsID := lCurrNode.ItemID;
+      TibcDatabaseNode(Parent.Data).DomainsID := lCurrNode.Index;
     end;
     NODE_TABLES:
     begin
       lCurrNode.ImageIndex := NODE_TABLES_IMG;
       lCurrNode.SelectedIndex := NODE_TABLES_IMG;
-      TibcDatabaseNode(Parent.Data).TablesID := lCurrNode.ItemID;
+      TibcDatabaseNode(Parent.Data).TablesID := lCurrNode.Index;
     end;
     NODE_PROCEDURES:
     begin
       lCurrNode.ImageIndex := NODE_PROCEDURES_IMG;
       lCurrNode.SelectedIndex := NODE_PROCEDURES_IMG;
-      TibcDatabaseNode(Parent.Data).ProceduresID := lCurrNode.ItemID;
+      TibcDatabaseNode(Parent.Data).ProceduresID := lCurrNode.Index;
     end;
     NODE_VIEWS:
     begin
       lCurrNode.ImageIndex := NODE_VIEWS_IMG;
       lCurrNode.SelectedIndex := NODE_VIEWS_IMG;
-      TibcDatabaseNode(Parent.Data).ViewsID := lCurrNode.ItemID;
+      TibcDatabaseNode(Parent.Data).ViewsID := lCurrNode.Index;
     end;
     NODE_TRIGGERS:
     begin
       lCurrNode.ImageIndex := NODE_TRIGGERS_IMG;
       lCurrNode.SelectedIndex := NODE_TRIGGERS_IMG;
-      TibcDatabaseNode(Parent.Data).TriggersID := lCurrNode.ItemID;
+      TibcDatabaseNode(Parent.Data).TriggersID := lCurrNode.Index;
     end;
     NODE_EXCEPTIONS:
     begin
       lCurrNode.ImageIndex := NODE_EXCEPTIONS_IMG;
       lCurrNode.SelectedIndex := NODE_EXCEPTIONS_IMG;
-      TibcDatabaseNode(Parent.Data).ExceptionsID := lCurrNode.ItemID;
+      TibcDatabaseNode(Parent.Data).ExceptionsID := lCurrNode.Index;
     end;
     NODE_BLOB_FILTERS:
     begin
       lCurrNode.ImageIndex := NODE_BLOB_FILTERS_IMG;
       lCurrNode.SelectedIndex := NODE_BLOB_FILTERS_IMG;
-      TibcDatabaseNode(Parent.Data).FiltersID := lCurrNode.ItemID;
+      TibcDatabaseNode(Parent.Data).FiltersID := lCurrNode.Index;
     end;
     NODE_GENERATORS:
     begin
       lCurrNode.ImageIndex := NODE_GENERATORS_IMG;
       lCurrNode.SelectedIndex := NODE_GENERATORS_IMG;
-      TibcDatabaseNode(Parent.Data).GeneratorsID := lCurrNode.ItemID;
+      TibcDatabaseNode(Parent.Data).GeneratorsID := lCurrNode.Index;
     end;
     NODE_ROLES:
     begin
       lCurrNode.ImageIndex := NODE_ROLES_IMG;
       lCurrNode.SelectedIndex := NODE_ROLES_IMG;
-      TibcDatabaseNode(Parent.Data).RolesID := lCurrNode.ItemID;
+      TibcDatabaseNode(Parent.Data).RolesID := lCurrNode.Index;
     end;
     NODE_FUNCTIONS:
     begin
       lCurrNode.ImageIndex := NODE_FUNCTIONS_IMG;
       lCurrNode.SelectedIndex := NODE_FUNCTIONS_IMG;
-      TibcDatabaseNode(Parent.Data).FunctionsID := lCurrNode.ItemID;
+      TibcDatabaseNode(Parent.Data).FunctionsID := lCurrNode.Index;
     end;
   end;
 end;
@@ -2352,7 +2352,7 @@ begin
     begin
        if (ssAlt in Shift) and Assigned (lvObjects.PopupMenu) then
        begin
-         pt := ClientToScreen(lvObjects.Selected.GetPosition);
+         pt := ClientToScreen(lvObjects.Selected.Position);
          lvObjects.PopupMenu.Popup (pt.X, pt.Y);
        end
        else
@@ -2415,7 +2415,7 @@ begin
               FPersistentInfo.Registry.OpenKey(Format('%s%s\Databases',[gRegServersKey,FCurrSelServer.Nodename]),true);
               FPersistentInfo.Registry.DeleteKey(FCurrSelDatabase.NodeName);
               FPersistentInfo.Registry.CloseKey;
-              DeleteNode(tvMain.Items.GetNode(FCurrSelDatabase.NodeID),false);
+              DeleteNode(tvMain.Items[FCurrSelDatabase.NodeID],false);
               FCurrSelDatabase := nil;
               tvMainChange(nil,nil);
               GetDatabases(FCurrSelServer);
@@ -2448,7 +2448,7 @@ begin
         FPersistentInfo.Registry.OpenKey(Format('%s%s\Databases',[gRegServersKey,FCurrSelServer.Nodename]),true);
         FPersistentInfo.Registry.DeleteKey(FCurrSelDatabase.NodeName);
         FPersistentInfo.Registry.CloseKey;
-        DeleteNode(tvMain.Items.GetNode(FCurrSelDatabase.NodeID),false);
+        DeleteNode(tvMain.Items[FCurrSelDatabase.NodeID],false);
         FCurrSelDatabase := nil;
         tvMainChange(nil,nil);
         GetDatabases(FCurrSelServer);
@@ -2483,7 +2483,7 @@ begin
   begin
     if DoDBDisconnect(FCurrSelDatabase) then
     begin
-      lCurrNode := tvMain.Items.GetNode(FCurrSelDatabase.NodeID);
+      lCurrNode := tvMain.Items[FCurrSelDatabase.NodeID];
       lCurrNode.SelectedIndex := 2;
       lCurrNode.ImageIndex := 2;
       DeleteNode(lCurrNode, true);
@@ -2764,7 +2764,7 @@ begin
       FPersistentInfo.Registry.OpenKey(Format('%s%s\Databases',[gRegServersKey,FCurrSelServer.Nodename]),true);
       FPersistentInfo.Registry.DeleteKey(FCurrSelDatabase.NodeName);
       FPersistentInfo.Registry.CloseKey;
-      DeleteNode(tvMain.Items.GetNode(FCurrSelDatabase.NodeID),false);
+      DeleteNode(tvMain.Items[FCurrSelDatabase.NodeID],false);
       tvMainChange(nil,nil);
       GetDatabases(FCurrSelServer);
     end;
@@ -2814,7 +2814,7 @@ end;
 
 procedure TfrmMain.HelpAboutExecute(Sender: TObject);
 begin
-  frmuAbout.ShowAboutDialog('IBConsole', APP_VERSION);
+  frmuAbout.ShowAboutDialog('Firebird Management Studio', APP_VERSION);
 end;
 
 procedure TfrmMain.BackupRestoreModifyAliasExecute(Sender: TObject);
@@ -2864,16 +2864,16 @@ begin
         FCurrSelServer.Version := 6;
         if not FCurrSelServer.Server.Active then
         begin
-          lCurrNode := tvMain.Items.GetNode(FCurrSelServer.DatabasesID);
+          lCurrNode := tvMain.Items[FCurrSelServer.DatabasesID];
           for i := lCurrNode.Count - 1 downto 0  do
           begin
-            lDatabaseNode := TibcDatabaseNode(lCurrNode.Item[i].Data);
+            lDatabaseNode := TibcDatabaseNode(lCurrNode.Items[i].Data);
             DoDBDisconnect(lDatabaseNode);
-            DeleteNode(lCurrNode.Item[i], true);
-            lCurrNode.Item[i].SelectedIndex := 2;
-            lCurrNode.Item[i].ImageIndex := 2;
+            DeleteNode(lCurrNode.Items[i], true);
+            lCurrNode.Items[i].SelectedIndex := 2;
+            lCurrNode.Items[i].ImageIndex := 2;
           end;
-          lCurrNode := tvMain.Items.GetNode(FCurrSelServer.NodeID);
+          lCurrNode := tvMain.Items[FCurrSelServer.NodeID];
           DeleteNode(lCurrNode, true);
           lCurrNode.SelectedIndex := 1;
           lCurrNode.ImageIndex := 1;
@@ -2887,19 +2887,19 @@ begin
         if not FCurrSelServer.Server.Active then
         begin
           tvMain.Items.BeginUpdate;
-          lCurrNode := tvMain.Items.GetNode(FCurrSelServer.DatabasesID);
+          lCurrNode := tvMain.Items[FCurrSelServer.DatabasesID];
           if Assigned (lCurrNode) then
           begin
           for i := lCurrNode.Count - 1 downto 0  do
           begin
-            lDatabaseNode := TibcDatabaseNode(lCurrNode.Item[i].Data);
+            lDatabaseNode := TibcDatabaseNode(lCurrNode.Items[i].Data);
             DoDBDisconnect(lDatabaseNode);
-            DeleteNode(lCurrNode.Item[i], true);
-            lCurrNode.Item[i].SelectedIndex := 2;
-            lCurrNode.Item[i].ImageIndex := 2;
+            DeleteNode(lCurrNode.Items[i], true);
+            lCurrNode.Items[i].SelectedIndex := 2;
+            lCurrNode.Items[i].ImageIndex := 2;
           end;
           end;
-          lCurrNode := tvMain.Items.GetNode(FCurrSelServer.NodeID);
+          lCurrNode := tvMain.Items[FCurrSelServer.NodeID];
           DeleteNode(lCurrNode, true);
           lCurrNode.SelectedIndex := 1;
           lCurrNode.ImageIndex := 1;
@@ -2945,7 +2945,7 @@ begin
                 FPersistentInfo.Registry.DeleteKey(Format('%s%s\Databases',[gRegServersKey,FCurrSelServer.NodeName]));
                 FPersistentInfo.Registry.DeleteKey(Format('%s%s',[gRegServersKey, FCurrSelServer.NodeName]));
                 FPersistentInfo.Registry.CloseKey;
-                DeleteNode(tvMain.Items.GetNode(FCurrSelServer.NodeID),false);
+                DeleteNode(tvMain.Items[FCurrSelServer.NodeID],false);
                 FCurrSelServer := nil;
                 tvMainChange(nil,nil);
                 GetServers;
@@ -2978,7 +2978,7 @@ begin
       then
         FCurrSelServer.OutputWindow.Close;
 
-      DeleteNode(tvMain.Items.GetNode(FCurrSelServer.NodeID),false);
+      DeleteNode(tvMain.Items[FCurrSelServer.NodeID],false);
       FCurrSelServer := nil;
       tvMainChange(nil,nil);
       GetServers();
@@ -3017,8 +3017,8 @@ end;
 
 procedure TfrmMain.EditFontExecute(Sender: TObject);
 begin
-//  if ActiveControl is TRichEdit then
-//    TRichEdit(ActiveControl).ChangeFont;
+//  if ActiveControl is TlzRichEdit then
+//    TlzRichEdit(ActiveControl).ChangeFont;
 end;
 
 procedure TfrmMain.DatabaseBackupExecute(Sender: TObject);
@@ -3166,7 +3166,7 @@ begin
     lvObjects.Columns.BeginUpdate;
     for lCnt := 0 to lvObjects.Columns.Count - 1 do
     begin
-      lvObjects.Columns[lCnt].Width := ColumnTextWidth;
+      lvObjects.Columns[lCnt].AutoSize := true;
     end;
     lvObjects.Columns.EndUpdate;
 
@@ -3224,7 +3224,7 @@ begin
       FPersistentInfo.Registry.OpenKey(Format('%s%s\Databases',[gRegServersKey,FCurrSelServer.Nodename]),true);
       FPersistentInfo.Registry.DeleteKey(FCurrSelDatabase.NodeName);
       FPersistentInfo.Registry.CloseKey;
-      DeleteNode(tvMain.Items.GetNode(FCurrSelDatabase.NodeID),false);
+      DeleteNode(tvMain.Items[FCurrSelDatabase.NodeID],false);
       tvMainChange(nil,nil);
       GetDatabases(FCurrSelServer);
     end;
@@ -3398,7 +3398,7 @@ begin
   if gExternalApps.Count > 0 then
   begin
     { Add a separator }
-    ToolMenu.NewBottomLine;
+    ToolMenu.AddSeparator();
     for lCnt := 0 to gExternalApps.Count - 1 do
     begin
       MenuItem := ToolMenu.Find (gExternalApps.Strings[lCnt]);
@@ -3520,7 +3520,7 @@ end;
 
 procedure TfrmMain.EditFontUpdate(Sender: TObject);
 begin
-  (Sender as TAction).Enabled := (ActiveControl is TRichEdit);
+  (Sender as TAction).Enabled := (ActiveControl is TlzRichEdit);
 end;
 
 
@@ -3553,7 +3553,7 @@ begin
       FPersistentInfo.Registry.OpenKey(Format('%s%s\Backup Files',[gRegServersKey,FCurrSelServer.Nodename]),true);
       FPersistentInfo.Registry.DeleteKey(FCurrSelTreeNode.NodeName);
       FPersistentInfo.Registry.CloseKey;
-      DeleteNode(tvMain.Items.GetNode(FCurrSelTreeNode.NodeID),false);
+      DeleteNode(tvMain.Items[FCurrSelTreeNode.NodeID],false);
       tvMainChange(nil,nil);
     end;
   end;

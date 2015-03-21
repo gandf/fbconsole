@@ -72,7 +72,7 @@ const
   PLATFORM_W9x = 'Windows 9x';
   PLATFORM_NT  = 'Windows NT';
   MEM_IN_USE = 'Memory in use %d%%';
-  IBCONSOLE = 'ibconsole.exe';
+  IBCONSOLE = 'Firebird_Management_Studio.exe';
 
 {****************************************************************
 *

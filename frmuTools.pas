@@ -114,7 +114,6 @@ begin
     end;
 
     Flags := DT_EXPANDTABS or DT_VCENTER;
-    Flags := DrawTextBiDiModeFlags(Flags);
     DrawText(Handle, PChar(lbTools.Items[Index]), -1, Rect, Flags);
   end;
 end;

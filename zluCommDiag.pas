@@ -27,8 +27,7 @@
 *
 *  Description:  This unit provides all the necessary functions
 *                to ping a remote server, test specific services
-*                via TCP/IP and test a connection to a server
-*                using NetBEUI and SPX.
+*                via TCP/IP.
 *
 *****************************************************************
 * Revisions:
@@ -42,7 +41,7 @@ interface
 
 uses
   LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  Winsock, PSock, Math;
+  Winsock, Math,  lNetComponents, Windows;
 
 type
   TIPAddress = LongInt;                // IP address
@@ -185,18 +184,14 @@ type
   * Revisions:
   *
   *****************************************************************}
-  TibcSocket = class(TPowerSock)
+  TibcSocket = class(TLTCPComponent)
   private
     { private declarations }
     FPortName               : String;
     function GetPortName    : String;
-    function GetSockDesc    : String;
-    function GetSockVersion : String;
   public
     { public declarations }
     property PortName       : String read GetPortName;
-    property WSDescription  : String read GetSockDesc;
-    property WSVersion      : String read GetSockVersion;
   published
     { published declarations }
   end;
@@ -256,7 +251,6 @@ type
 //    FName    : String;
     FPath    : String;
     FPipe    : String;
-    FSA      : SECURITY_ATTRIBUTES;
     FServer  : String;
     FTotal   : Integer;
     hPipe    : HANDLE;
@@ -695,36 +689,6 @@ begin
   Result:=FPortName;                   // return service name
 end;
 
-// accessor to get socket desciption
-function TibcSocket.GetSockDesc : String;
-var
-  Desc : String;
-begin
-  if assigned(WSAInfo) then
-  begin
-    Desc:=WSAInfo.Strings[2];
-  end
-  else
-    Desc:='N/A';
-
-  Result:=Desc;
-end;
-
-// accessor to get socket version
-function TibcSocket.GetSockVersion : String;
-var
-  Version : String;
-begin
-  if assigned(WSAInfo) then
-  begin
-    Version:=WSAInfo.Strings[1];
-  end
-  else
-    Version:='N/A';
-
-  Result:=Version;
-end;
-
 // accessor to get server name
 function TibcPipes.GetServer : String;
 begin
@@ -803,9 +767,6 @@ begin
 
     // set security attributes
     FDefault:='CSDiagDefault';
-    FSA.nLength := SizeOf(FSA);
-    FSA.lpSecurityDescriptor := Nil;
-    FSA.bInheritHandle := FALSE;
 
     pPipe:=PChar(FPipe);
 

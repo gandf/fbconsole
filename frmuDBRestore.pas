@@ -91,7 +91,7 @@ type
 
     FSourceServerNode: TibcServerNode;
     function VerifyInputData(): boolean;
-//    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+//    procedure LMLButtonDown( var Message: TLMLButtonDown ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
     FFileList: TStringList;
@@ -917,7 +917,7 @@ begin
     frmDBRestore := TfrmDBRestore.Create(Application.MainForm);
     frmDBRestore.FSourceServerNode := SourceServerNode;
     frmDBRestore.stxBackupServer.Caption := SourceServerNode.NodeName;
-    lCurrBackupAliasesNode := frmMain.tvMain.Items.GetNode(SourceServerNode.BackupFilesID);
+    lCurrBackupAliasesNode := frmMain.tvMain.Items[SourceServerNode.BackupFilesID];
 
     for i := 1 to TibcTreeNode(lCurrBackupAliasesNode.Data).ObjectList.Count - 1 do
     begin
@@ -978,7 +978,7 @@ begin
 
   if cbDBServer.ItemIndex <> -1 then
   begin
-    lCurrDatabaseAliasesNode := frmMain.tvMain.Items.GetNode(TibcServerNode(cbDBServer.Items.Objects[cbDBServer.ItemIndex]).DatabasesID);
+    lCurrDatabaseAliasesNode := frmMain.tvMain.Items[TibcServerNode(cbDBServer.Items.Objects[cbDBServer.ItemIndex]).DatabasesID];
 
     if Assigned(lCurrDatabaseAliasesNode) then
     begin
@@ -1009,12 +1009,12 @@ begin
   end;
 
   if (cbDBAlias.ItemIndex > -1) and (Assigned(cbDBAlias.Items.Objects[cbDBAlias.ItemIndex])) then
-    lCurrDBNode := frmMain.tvMain.Items.GetNode(TibcDatabaseNode(cbDBAlias.Items.Objects[cbDBAlias.ItemIndex]).NodeID)
+    lCurrDBNode := frmMain.tvMain.Items[TibcDatabaseNode(cbDBAlias.Items.Objects[cbDBAlias.ItemIndex]).NodeID]
   else
     lCurrDBNode := nil;
 
   if (cbDBAlias.ItemIndex > -1) and (Assigned(cbDBServer.Items.Objects[cbDBServer.ItemIndex])) then
-    lCurrServerNode := frmMain.tvMain.Items.GetNode(TibcServerNode(cbDBServer.Items.Objects[cbDBServer.ItemIndex]).NodeID)
+    lCurrServerNode := frmMain.tvMain.Items[TibcServerNode(cbDBServer.Items.Objects[cbDBServer.ItemIndex]).NodeID]
   else
     lCurrServerNode := nil;
 
@@ -1094,7 +1094,7 @@ begin
           OnKeyDown := nil;
           Color := clbtnFace;
           Row := 1;
-          lCurrBackupAliasNode := frmMain.tvMain.Items.GetNode(TibcBackupAliasNode(Items.Objects[ItemIndex]).NodeID);
+          lCurrBackupAliasNode := frmMain.tvMain.Items[TibcBackupAliasNode(Items.Objects[ItemIndex]).NodeID];
           for i := 1 to TibcBackupAliasNode(lCurrBackupAliasNode.Data).BackupFiles.Count do
           begin
             lCurrLine := TibcBackupAliasNode(lCurrBackupAliasNode.Data).BackupFiles.Strings[i-1];
@@ -1119,20 +1119,20 @@ function TfrmDBRestore.FormHelp(Command: Word; Data: Integer;
   var CallHelp: Boolean): Boolean;
 begin
   CallHelp := False;
-  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_RESTORE);
+//  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_RESTORE);
 end;
 
-{procedure TfrmDBRestore.WMNCLButtonDown( var Message: TWMNCLButtonDown );
+{procedure TfrmDBRestore.LMLButtonDown( var Message: TLMLButtonDown );
 var
   ScreenPt: TPoint;
   ClientPt: TPoint;
 begin
-  ScreenPt.X := Message.XCursor;
-  ScreenPt.Y := Message.YCursor;
+  ScreenPt.X := Message.XPos;
+  ScreenPt.Y := Message.YPos;
   ClientPt := ScreenToClient( ScreenPt );
   if( ClientPt.X > Width-45 )and (ClientPt.X < Width-29) then
    begin
-    WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_RESTORE);
+    //WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_RESTORE);
     Message.Result := 0;
   end else
    inherited;

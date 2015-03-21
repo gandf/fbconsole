@@ -20,7 +20,7 @@ unit frmuTextViewer;
 interface
 
 uses
-  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Interfaces, Dialogs,
   ComCtrls, ToolWin, StdCtrls, Menus, ImgList, Printers, IBServices, frmuDlgClass,
   RichBox, StdActns, ActnList, FileUtil;
 
@@ -143,7 +143,7 @@ function TfrmTextViewer.FormHelp(Command: Word; Data: Integer;
 begin
   CallHelp := False;
   // call WinHelp and show internal text viewer topic
-  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,FEATURES_INTERNAL_TEXT_VIEWER);
+  //Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,FEATURES_INTERNAL_TEXT_VIEWER);
 end;
 
 procedure TfrmTextViewer.FormResize(Sender: TObject);
@@ -250,7 +250,7 @@ begin
     if reEditor.SelLength > 0 then
       reEditor.SelAttributes.Assign(FontDialog1.Font)
     else
-      reEditor.DefAttributes.Assign(FontDialog1.Font);
+      reEditor.Font.Assign(FontDialog1.Font);
   reEditorEnter(Self);
   reEditor.SetFocus;
 end;
@@ -262,23 +262,24 @@ end;
 
 procedure TfrmTextViewer.mnuFiPrintClick(Sender: TObject);
 var
-  lPrintDialog: TPrintDialog;
+  lPrintDialog: TCustomPrintDialog;
   lLine: integer;
   lPrintText: TextFile;
 begin
+  {
   lPrintDialog := nil;
-  if ActiveControl is TRichEdit then
+  if ActiveControl is TlzRichEdit then
   begin
     try
-      lPrintDialog := TPrintDialog.Create(Self);
+      lPrintDialog := TCustomPrintDialog.Create(Self);
       try
         if lPrintDialog.Execute then
         begin
           AssignPrn(lPrintText);
           Rewrite(lPrintText);
-          Printer.Canvas.Font := TRichEdit(ActiveControl).Font;
-          for lLine := 0 to TRichEdit(ActiveControl).Lines.Count - 1 do
-            Writeln(lPrintText, TRichEdit(ActiveControl).Lines[lLine]);
+          Printer.Canvas.Font := TlzRichEdit(ActiveControl).Font;
+          for lLine := 0 to TlzRichEdit(ActiveControl).Lines.Count - 1 do
+            Writeln(lPrintText, TlzRichEdit(ActiveControl).Lines[lLine]);
           CloseFile(lPrintText);
         end
         else
@@ -290,6 +291,7 @@ begin
       lPrintDialog.free;
     end;
   end;
+  }
 end;
 
 procedure TfrmTextViewer.FormClose(Sender: TObject;
@@ -330,7 +332,7 @@ var
   FoundAt: LongInt;
   StartPos, ToEnd: Integer;
 begin
-  with ActiveControl as TRichEdit do
+  with ActiveControl as TlzRichEdit do
   begin
     if SelLength <> 0 then
       StartPos := SelStart + SelLength
@@ -341,7 +343,7 @@ begin
 
     ToEnd := Length(Text) - StartPos;
 
-    FoundAt := FindText(FindDialog1.FindText, StartPos, ToEnd, [stMatchCase]);
+    FoundAt := FindText(FindDialog1.FindText, StartPos, ToEnd, [stMatchCase], false);
     if FoundAt <> -1 then
     begin
       SetFocus;

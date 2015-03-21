@@ -155,15 +155,15 @@ begin
   begin
     // This is of cource highly redundant, to be fixed later
     RootKey := HKEY_CURRENT_USER;
-    OpenKey('Software',true);
-    OpenKey('Borland',true);
-    OpenKey('InterBase',true);
-    OpenKey('IBConsole',true);
+    OpenKey('Software\',true);
+   // OpenKey('Flyonsoft\',true);
+    OpenKey('Firebird\',true);
+    OpenKey('Firebird_Management_Studio\',true);
     CreateKey('Servers');
-    gRegServersKey := Format('\%s\Servers\',[CurrentPath]);
+    gRegServersKey := Format('\%sServers\',[CurrentPath]);
     CreateKey('Settings');
-    gRegSettingsKey := Format('\%s\Settings',[CurrentPath]);
-    gRegToolsKey := Format('%s\Tools',[gRegSettingsKey]);
+    gRegSettingsKey := Format('\%sSettings\',[CurrentPath]);
+    gRegToolsKey := Format('%sTools',[gRegSettingsKey]);
   end;
 
   with FRegistry do
@@ -192,13 +192,16 @@ var
   begin
   if FRegistry.OpenKey(gRegSettingsKey, TRUE) then
     begin
-    if FRegistry.ReadBinaryData(Id, wSettings, SizeOf(TWinSettings)) >= SizeOf(TWinSettings) then
+    try
+      if FRegistry.ReadBinaryData(Id, wSettings, SizeOf(TWinSettings)) >= SizeOf(TWinSettings) then
       begin
-      AForm.Top := wSettings._Top;
-      AForm.Left := wSettings._Left;
-      AForm.Height := wSettings._Height;
-      AForm.Width := wSettings._Width;
-      AForm.WindowState := wSettings._State;
+        AForm.Top := wSettings._Top;
+        AForm.Left := wSettings._Left;
+        AForm.Height := wSettings._Height;
+        AForm.Width := wSettings._Width;
+        AForm.WindowState := wSettings._State;
+      end;
+    except
     end;
     FRegistry.CloseKey;
   end;
@@ -253,8 +256,15 @@ begin
 end;
 
 function TibcPersistentInfo.ServerAliasExists(Alias: string): boolean;
+var
+  fSt: string;
 begin
-  Result := FRegistry.KeyExists(Format('%s%s',[gRegServersKey, Alias]));
+  if FRegistry.OpenKey(gRegServersKey, FALSE) then
+    Result := true
+  else
+    Result := false;
+  //fSt := Format('%s%s\',[gRegServersKey, Alias]);
+  //Result := FRegistry.KeyExists(fSt);
 end;
 
 procedure TibcPersistentInfo.DeleteServerAlias(Alias: string);

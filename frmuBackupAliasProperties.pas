@@ -75,7 +75,7 @@ type
     FCurrSelServer : TibcServerNode;
     FPreviousKeyName : String;
     function VerifyInputData() : boolean;
-    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+    procedure LMLButtonDown( var Message: TLMLButtonDown ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
     FBackupAliasNode: TibcBackupAliasNode;
@@ -133,7 +133,7 @@ begin
 
     frmBackupAliasProperties.FCurrSelServer := SourceServerNode;
     frmBackupAliasProperties.FPreviousKeyName := BackupAliasNode.NodeName;
-    lCurrBackupAliasNode := frmMain.tvMain.Items.GetNode(SourceServerNode.DatabasesID);
+    lCurrBackupAliasNode := frmMain.tvMain.Items[SourceServerNode.DatabasesID];
 
     // get list of server aliases and place in dbserver combo box
     for i := 1 to TibcTreeNode(frmMain.tvMain.Items[0].Data).ObjectList.Count - 1 do
@@ -185,7 +185,7 @@ function TfrmBackupAliasProperties.FormHelp(Command: Word; Data: Integer;
   var CallHelp: Boolean): Boolean;
 begin
   CallHelp := False;
-  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,BACKUP_CONFIGURATION_PROPERTIES);
+  //Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,BACKUP_CONFIGURATION_PROPERTIES);
 end;
 
 procedure TfrmBackupAliasProperties.FormCreate(Sender: TObject);
@@ -261,7 +261,7 @@ begin
   lCUrrDBAliasesNode := Nil;
 
   if cbDBServer.ItemIndex <> -1 then
-    lCurrDBAliasesNode := frmMain.tvMain.Items.GetNode(TibcServerNode(cbDBServer.Items.Objects[cbDBServer.ItemIndex]).BackupFilesID);
+    lCurrDBAliasesNode := frmMain.tvMain.Items[TibcServerNode(cbDBServer.Items.Objects[cbDBServer.ItemIndex]).BackupFilesID];
 
   if Assigned(lCurrDBAliasesNode) then
   begin
@@ -300,7 +300,7 @@ var
 begin
   result := true;
 
-  lCurrParentNode := frmMain.tvMain.Items.GetNode(FCurrSelServer.BackupFilesID);
+  lCurrParentNode := frmMain.tvMain.Items[FCurrSelServer.BackupFilesID];
   lCurrChildNode := lCurrParentNode.GetFirstChild();
   while (lCurrChildNode <> nil) do
   begin
@@ -323,17 +323,17 @@ begin
   end;
 end;
 
-procedure TfrmBackupAliasProperties.WMNCLButtonDown( var Message: TWMNCLButtonDown );
+procedure TfrmBackupAliasProperties.LMLButtonDown( var Message: TLMLButtonDown );
 var
   ScreenPt: TPoint;
   ClientPt: TPoint;
 begin
-  ScreenPt.X := Message.XCursor;
-  ScreenPt.Y := Message.YCursor;
+  ScreenPt.X := Message.XPos;
+  ScreenPt.Y := Message.YPos;
   ClientPt := ScreenToClient( ScreenPt );
   if( ClientPt.X > Width-45 )and (ClientPt.X < Width-29) then
    begin
-    WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,BACKUP_CONFIGURATION_PROPERTIES);
+    //WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,BACKUP_CONFIGURATION_PROPERTIES);
     Message.Result := 0;
   end else
    inherited;

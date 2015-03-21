@@ -74,7 +74,7 @@ type
     procedure NoteChanges();
     procedure Refresh();
     procedure ShowActivity();
-    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+    procedure LMLButtonDown( var Message: TLMLButtonDown ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
     procedure AssignServerNode(const ServerNode: TibcServerNode);
@@ -150,7 +150,7 @@ function TfrmServerProperties.FormHelp(Command: Word; Data: Integer;
   var CallHelp: Boolean): Boolean;
 begin
   CallHelp := False;
-  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_PROPERTIES);
+  //Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_PROPERTIES);
 end;
 
 procedure TfrmServerProperties.btnApplyClick(Sender: TObject);
@@ -729,17 +729,17 @@ begin
   FLicenseDesc.Free;
 end;
 
-procedure TfrmServerProperties.WMNCLButtonDown( var Message: TWMNCLButtonDown );
+procedure TfrmServerProperties.LMLButtonDown( var Message: TLMLButtonDown );
 var
   ScreenPt: TPoint;
   ClientPt: TPoint;
 begin
-  ScreenPt.X := Message.XCursor;
-  ScreenPt.Y := Message.YCursor;
+  ScreenPt.X := Message.XPos;
+  ScreenPt.Y := Message.YPos;
   ClientPt := ScreenToClient( ScreenPt );
   if( ClientPt.X > Width-45 )and (ClientPt.X < Width-29) then
    begin
-    WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_PROPERTIES);
+    //WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_PROPERTIES);
     Message.Result := 0;
   end else
    inherited;

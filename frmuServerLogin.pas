@@ -47,7 +47,7 @@ type
     { Private declarations }
     function VerifyInputData(): boolean;
     class function DoLogin(var CurrSelServer: TibcServerNode): boolean;
-//    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+//    procedure LMLButtonDown( var Message: TLMLButtonDown ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
   end;
@@ -92,7 +92,7 @@ begin
       Screen.Cursor := crDefault;      // change cursor to default
       case E.IBErrorCode of
         isc_svcnotdef:
-          raise Exception.Create ('IBConsole can not be used to administer pre-InterBase 6.0 servers');
+          raise Exception.Create ('Firebird Management Studio can not be used to administer pre-InterBase 6.0 servers');
         else
           DisplayMsg (ERR_SERVER_LOGIN, E.Message);
       end;
@@ -181,17 +181,17 @@ begin
   end;
 end;
 
-{procedure TfrmServerLogin.WMNCLButtonDown( var Message: TWMNCLButtonDown );
+{procedure TfrmServerLogin.LMLButtonDown( var Message: TLMLButtonDown );
 var
   ScreenPt: TPoint;
   ClientPt: TPoint;
 begin
-  ScreenPt.X := Message.XCursor;
-  ScreenPt.Y := Message.YCursor;
+  ScreenPt.X := Message.XPos;
+  ScreenPt.Y := Message.YPos;
   ClientPt := ScreenToClient( ScreenPt );
   if( ClientPt.X > Width-45 )and (ClientPt.X < Width-29) then
    begin
-    WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_LOGIN);
+    //WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,SERVER_LOGIN);
     Message.Result := 0;
   end else
    inherited;

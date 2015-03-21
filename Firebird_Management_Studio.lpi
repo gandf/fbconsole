@@ -2,17 +2,14 @@
 <CONFIG>
   <ProjectOptions>
     <Version Value="9"/>
+    <PathDelim Value="\"/>
     <General>
-      <Flags>
-        <MainUnitHasUsesSectionForAllUnits Value="False"/>
-        <MainUnitHasCreateFormStatements Value="False"/>
-        <MainUnitHasTitleStatement Value="False"/>
-      </Flags>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
-      <Title Value="IBConsole"/>
-      <UseAppBundle Value="False"/>
+      <Title Value="Firebird_Management_Studio"/>
       <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <Icon Value="0"/>
     </General>
     <i18n>
       <EnableI18N LFM="False"/>
@@ -20,8 +17,14 @@
     <VersionInfo>
       <StringTable ProductVersion=""/>
     </VersionInfo>
+    <MacroValues Count="1">
+      <Macro1 Name="LCLWidgetType" Value="win32"/>
+    </MacroValues>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
+      <SharedMatrixOptions Count="1">
+        <Item1 ID="303540750125" Modes="Default" Type="IDEMacro" MacroName="LCLWidgetType" Value="win32"/>
+      </SharedMatrixOptions>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
@@ -31,304 +34,290 @@
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <RequiredPackages Count="3">
+    <RequiredPackages Count="4">
       <Item1>
-        <PackageName Value="LazRichEdit"/>
+        <PackageName Value="LCL"/>
       </Item1>
       <Item2>
-        <PackageName Value="ibexpress"/>
+        <PackageName Value="LazRichEdit"/>
       </Item2>
       <Item3>
-        <PackageName Value="LCL"/>
+        <PackageName Value="ibexpress"/>
       </Item3>
+      <Item4>
+        <PackageName Value="lnetvisual"/>
+      </Item4>
     </RequiredPackages>
     <Units Count="45">
       <Unit0>
-        <Filename Value="IBConsole.lpr"/>
+        <Filename Value="Firebird_Management_Studio.lpr"/>
         <IsPartOfProject Value="True"/>
       </Unit0>
       <Unit1>
-        <Filename Value="frmuMain.pas"/>
+        <Filename Value="frmuSplash.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSplash"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuMain"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit1>
       <Unit2>
+        <Filename Value="dmuMain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="dmMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="dmuMain"/>
+      </Unit2>
+      <Unit3>
         <Filename Value="frmuAbout.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmAbout"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="frmuAbout"/>
-      </Unit2>
-      <Unit3>
-        <Filename Value="zluGlobal.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="zluGlobal"/>
       </Unit3>
       <Unit4>
-        <Filename Value="frmuServerLogin.pas"/>
+        <Filename Value="frmuAddTool.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuServerLogin"/>
       </Unit4>
       <Unit5>
-        <Filename Value="frmuUser.pas"/>
-        <IsPartOfProject Value="True"/>
-        <HasResources Value="True"/>
-        <UnitName Value="frmuUser"/>
-      </Unit5>
-      <Unit6>
-        <Filename Value="dmuMain.pas"/>
-        <IsPartOfProject Value="True"/>
-        <HasResources Value="True"/>
-        <UnitName Value="dmuMain"/>
-      </Unit6>
-      <Unit7>
-        <Filename Value="frmuServerRegister.pas"/>
-        <IsPartOfProject Value="True"/>
-        <HasResources Value="True"/>
-        <UnitName Value="frmuServerRegister"/>
-      </Unit7>
-      <Unit8>
-        <Filename Value="zluibcClasses.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="zluibcClasses"/>
-      </Unit8>
-      <Unit9>
-        <Filename Value="frmuDBRegister.pas"/>
-        <IsPartOfProject Value="True"/>
-        <HasResources Value="True"/>
-        <UnitName Value="frmuDBRegister"/>
-      </Unit9>
-      <Unit10>
-        <Filename Value="frmuSplash.pas"/>
-        <IsPartOfProject Value="True"/>
-        <HasResources Value="True"/>
-        <UnitName Value="frmuSplash"/>
-      </Unit10>
-      <Unit11>
-        <Filename Value="frmuMessage.pas"/>
-        <IsPartOfProject Value="True"/>
-        <HasResources Value="True"/>
-        <UnitName Value="frmuMessage"/>
-      </Unit11>
-      <Unit12>
-        <Filename Value="zluUtility.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="zluUtility"/>
-      </Unit12>
-      <Unit13>
-        <Filename Value="frmuDBConnect.pas"/>
-        <IsPartOfProject Value="True"/>
-        <HasResources Value="True"/>
-        <UnitName Value="frmuDBConnect"/>
-      </Unit13>
-      <Unit14>
-        <Filename Value="frmuDBBackup.pas"/>
-        <IsPartOfProject Value="True"/>
-        <HasResources Value="True"/>
-        <UnitName Value="frmuDBBackup"/>
-      </Unit14>
-      <Unit15>
-        <Filename Value="frmuServerProperties.pas"/>
-        <IsPartOfProject Value="True"/>
-        <HasResources Value="True"/>
-        <UnitName Value="frmuServerProperties"/>
-      </Unit15>
-      <Unit16>
-        <Filename Value="frmuDBProperties.pas"/>
-        <IsPartOfProject Value="True"/>
-        <HasResources Value="True"/>
-        <UnitName Value="frmuDBProperties"/>
-      </Unit16>
-      <Unit17>
         <Filename Value="frmuBackupAliasProperties.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuBackupAliasProperties"/>
-      </Unit17>
-      <Unit18>
-        <Filename Value="frmuDBCreate.pas"/>
-        <IsPartOfProject Value="True"/>
-        <HasResources Value="True"/>
-        <UnitName Value="frmuDBCreate"/>
-      </Unit18>
-      <Unit19>
-        <Filename Value="zluContextHelp.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="zluContextHelp"/>
-      </Unit19>
-      <Unit20>
-        <Filename Value="zluCommDiag.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="zluCommDiag"/>
-      </Unit20>
-      <Unit21>
+      </Unit5>
+      <Unit6>
         <Filename Value="frmuCommDiag.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuCommDiag"/>
-      </Unit21>
-      <Unit22>
+      </Unit6>
+      <Unit7>
+        <Filename Value="frmuDBBackup.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="frmuDBConnect.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit8>
+      <Unit9>
         <Filename Value="frmuDBConnections.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuDBConnections"/>
-      </Unit22>
-      <Unit23>
-        <Filename Value="frmuDBShutdown.pas"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="frmuDBCreate.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuDBShutdown"/>
-      </Unit23>
-      <Unit24>
-        <Filename Value="frmuDBStatistics.pas"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="frmuDBProperties.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuDBStatistics"/>
-      </Unit24>
-      <Unit25>
-        <Filename Value="frmuDBValidationReport.pas"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="frmuDBRegister.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuDBValidationReport"/>
-      </Unit25>
-      <Unit26>
-        <Filename Value="frmuDBTransactions.pas"/>
-        <IsPartOfProject Value="True"/>
-        <HasResources Value="True"/>
-        <UnitName Value="frmuDBTransactions"/>
-      </Unit26>
-      <Unit27>
-        <Filename Value="frmuDBValidation.pas"/>
-        <IsPartOfProject Value="True"/>
-        <HasResources Value="True"/>
-        <UnitName Value="frmuDBValidation"/>
-      </Unit27>
-      <Unit28>
+      </Unit12>
+      <Unit13>
         <Filename Value="frmuDBRestore.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuDBRestore"/>
-      </Unit28>
-      <Unit29>
-        <Filename Value="frmuDispMemo.pas"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="frmuDBShutdown.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuDispMemo"/>
-      </Unit29>
-      <Unit30>
-        <Filename Value="frmuModifyServerAlias.pas"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="frmuDBStatistics.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuModifyServerAlias"/>
-      </Unit30>
-      <Unit31>
-        <Filename Value="zluSQL.pas"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="frmuDBTransactions.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="zluSQL"/>
-      </Unit31>
-      <Unit32>
+        <HasResources Value="True"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="frmuDBValidation.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="frmuDBValidationReport.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="frmuDescription.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit19>
+      <Unit20>
         <Filename Value="frmuDisplayBlob.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuDisplayBlob"/>
-      </Unit32>
-      <Unit33>
+      </Unit20>
+      <Unit21>
+        <Filename Value="frmuDispMemo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit21>
+      <Unit22>
         <Filename Value="frmuDlgClass.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="Dialog"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="frmuDlgClass"/>
-      </Unit33>
-      <Unit34>
+      </Unit22>
+      <Unit23>
+        <Filename Value="frmuMain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuMain"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="frmuMessage.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="frmuModifyServerAlias.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit25>
+      <Unit26>
         <Filename Value="frmuObjectWindow.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
         <UnitName Value="frmuObjectWindow"/>
-      </Unit34>
-      <Unit35>
-        <Filename Value="wisql.pas"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="frmuServerLogin.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UnitName Value="wisql"/>
-      </Unit35>
-      <Unit36>
-        <Filename Value="frmuTextViewer.pas"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="frmuServerProperties.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuTextViewer"/>
-      </Unit36>
-      <Unit37>
+      </Unit28>
+      <Unit29>
+        <Filename Value="frmuServerRegister.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+        <UnitName Value="frmuServerRegister"/>
+      </Unit29>
+      <Unit30>
         <Filename Value="frmuSQLOptions.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuSQLOptions"/>
-      </Unit37>
-      <Unit38>
+      </Unit30>
+      <Unit31>
+        <Filename Value="frmuTextViewer.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit31>
+      <Unit32>
         <Filename Value="frmuTools.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuTools"/>
-      </Unit38>
-      <Unit39>
-        <Filename Value="frmuAddTool.pas"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="frmuUser.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuAddTool"/>
-      </Unit39>
-      <Unit40>
-        <Filename Value="frmuDescription.pas"/>
-        <IsPartOfProject Value="True"/>
-        <HasResources Value="True"/>
-        <UnitName Value="frmuDescription"/>
-      </Unit40>
-      <Unit41>
+      </Unit33>
+      <Unit34>
         <Filename Value="frmuWindowList.pas"/>
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuWindowList"/>
-      </Unit41>
-      <Unit42>
+      </Unit34>
+      <Unit35>
+        <Filename Value="IBExtract.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit35>
+      <Unit36>
         <Filename Value="MemoLists.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="MemoLists"/>
-      </Unit42>
-      <Unit43>
+      </Unit36>
+      <Unit37>
+        <Filename Value="wisql.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="zluCommDiag.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="zluContextHelp.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="zluGlobal.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="zluibcClasses.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="zluibcClasses"/>
+      </Unit41>
+      <Unit42>
         <Filename Value="zluPersistent.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="zluPersistent"/>
+      </Unit42>
+      <Unit43>
+        <Filename Value="zluSQL.pas"/>
+        <IsPartOfProject Value="True"/>
       </Unit43>
       <Unit44>
-        <Filename Value="IBExtract.pas"/>
+        <Filename Value="zluUtility.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="IBExtract"/>
+        <UnitName Value="zluUtility"/>
       </Unit44>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <Target>
+      <Filename Value="Firebird_Management_Studio"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
     <Parsing>
       <SyntaxOptions>
-        <SyntaxMode Value="delphi"/>
+        <IncludeAssertionCode Value="True"/>
       </SyntaxOptions>
     </Parsing>
+    <CodeGeneration>
+      <Checks>
+        <IOChecks Value="True"/>
+        <OverflowChecks Value="True"/>
+        <StackChecks Value="True"/>
+      </Checks>
+    </CodeGeneration>
     <Linking>
+      <Debugging>
+        <UseValgrind Value="True"/>
+        <StripSymbols Value="True"/>
+        <UseExternalDbgSyms Value="True"/>
+      </Debugging>
       <Options>
         <Win32>
           <GraphicApplication Value="True"/>
         </Win32>
       </Options>
     </Linking>
-    <Other>
-      <CompilerMessages>
-        <MsgFileName Value=""/>
-      </CompilerMessages>
-      <CustomOptions Value="-dBorland -dVer150 -dDelphi7 -dCompiler6_Up -dPUREPASCAL"/>
-      <CompilerPath Value="$(CompPath)"/>
-    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="3">

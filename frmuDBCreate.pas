@@ -78,7 +78,7 @@ type
   private
     { Private declarations }
     function VerifyInputData(): boolean;
-    procedure WMNCLButtonDown( var Message: TWMNCLBUTTONDOWN ); message WM_NCLBUTTONDOWN ;
+    procedure LMLButtonDown( var Message: TLMLButtonDown ); message WM_NCLBUTTONDOWN ;
   public
     { Public declarations }
     FCurrSelServer: TIbcServerNode;
@@ -843,7 +843,7 @@ function TfrmDBCreate.FormHelp(Command: Word; Data: Integer;
   var CallHelp: Boolean): Boolean;
 begin
   CallHelp := False;
-  Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_CREATE);
+  //Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_CREATE);
 end;
 
 procedure TfrmDBCreate.cbOptionsDblClick(Sender: TObject);
@@ -868,17 +868,17 @@ begin
   edtDBAlias.Hint := edtDBAlias.Text;
 end;
 
-procedure TfrmDBCreate.WMNCLButtonDown( var Message: TWMNCLButtonDown );
+procedure TfrmDBCreate.LMLButtonDown( var Message: TLMLButtonDown );
 var
   ScreenPt: TPoint;
   ClientPt: TPoint;
 begin
-  ScreenPt.X := Message.XCursor;
-  ScreenPt.Y := Message.YCursor;
+  ScreenPt.X := Message.XPos;
+  ScreenPt.Y := Message.YPos;
   ClientPt := ScreenToClient( ScreenPt );
   if( ClientPt.X > Width-45 )and (ClientPt.X < Width-29) then
    begin
-    WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_CREATE);
+    //WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,DATABASE_CREATE);
     Message.Result := 0;
   end else
    inherited;
