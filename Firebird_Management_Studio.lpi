@@ -66,7 +66,6 @@
         <ComponentName Value="dmMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <UnitName Value="dmuMain"/>
       </Unit2>
       <Unit3>
         <Filename Value="frmuAbout.pas"/>
@@ -74,97 +73,132 @@
         <ComponentName Value="frmAbout"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="frmuAbout"/>
       </Unit3>
       <Unit4>
         <Filename Value="frmuAddTool.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmAddTools"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit4>
       <Unit5>
         <Filename Value="frmuBackupAliasProperties.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmBackupAliasProperties"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit5>
       <Unit6>
         <Filename Value="frmuCommDiag.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCommDiag"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit6>
       <Unit7>
         <Filename Value="frmuDBBackup.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDBBackup"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit7>
       <Unit8>
         <Filename Value="frmuDBConnect.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDBConnect"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit8>
       <Unit9>
         <Filename Value="frmuDBConnections.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDBConnections"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit9>
       <Unit10>
         <Filename Value="frmuDBCreate.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDBCreate"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit10>
       <Unit11>
         <Filename Value="frmuDBProperties.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDBProperties"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit11>
       <Unit12>
         <Filename Value="frmuDBRegister.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDBRegister"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit12>
       <Unit13>
         <Filename Value="frmuDBRestore.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDBRestore"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit13>
       <Unit14>
         <Filename Value="frmuDBShutdown.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDBShutdown"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit14>
       <Unit15>
         <Filename Value="frmuDBStatistics.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDBStatistics"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit15>
       <Unit16>
         <Filename Value="frmuDBTransactions.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDBTransactions"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit16>
       <Unit17>
         <Filename Value="frmuDBValidation.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDBValidation"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit17>
       <Unit18>
         <Filename Value="frmuDBValidationReport.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDBValidationReport"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit18>
       <Unit19>
         <Filename Value="frmuDescription.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDescription"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit19>
       <Unit20>
         <Filename Value="frmuDisplayBlob.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDisplayBlob"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit20>
       <Unit21>
         <Filename Value="frmuDispMemo.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDispMemo"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit21>
       <Unit22>
         <Filename Value="frmuDlgClass.pas"/>
@@ -184,59 +218,80 @@
       <Unit24>
         <Filename Value="frmuMessage.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmMessage"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit24>
       <Unit25>
         <Filename Value="frmuModifyServerAlias.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmModifyServerAlias"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit25>
       <Unit26>
         <Filename Value="frmuObjectWindow.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmObjectView"/>
         <HasResources Value="True"/>
-        <UnitName Value="frmuObjectWindow"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit26>
       <Unit27>
         <Filename Value="frmuServerLogin.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmServerLogin"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit27>
       <Unit28>
         <Filename Value="frmuServerProperties.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmServerProperties"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit28>
       <Unit29>
         <Filename Value="frmuServerRegister.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmServerRegister"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
         <UnitName Value="frmuServerRegister"/>
       </Unit29>
       <Unit30>
         <Filename Value="frmuSQLOptions.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSQLOptions"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit30>
       <Unit31>
         <Filename Value="frmuTextViewer.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmTextViewer"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit31>
       <Unit32>
         <Filename Value="frmuTools.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmTools"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit32>
       <Unit33>
         <Filename Value="frmuUser.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmUserInfo"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit33>
       <Unit34>
         <Filename Value="frmuWindowList.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="dlgWindowList"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit34>
       <Unit35>
         <Filename Value="IBExtract.pas"/>
@@ -249,7 +304,9 @@
       <Unit37>
         <Filename Value="wisql.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="dlgWisql"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit37>
       <Unit38>
         <Filename Value="zluCommDiag.pas"/>
@@ -266,7 +323,6 @@
       <Unit41>
         <Filename Value="zluibcClasses.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="zluibcClasses"/>
       </Unit41>
       <Unit42>
         <Filename Value="zluPersistent.pas"/>
