@@ -1,117 +1,118 @@
-object frmServerRegister: TfrmServerRegister
+inherited frmServerRegister: TfrmServerRegister
   Left = 269
+  Height = 384
   Top = 142
+  Width = 319
   HelpContext = 1
-  BorderIcons = [biSystemMenu, biHelp]
   BorderStyle = bsSingle
   Caption = 'Register Server and Login'
-  ClientHeight = 376
-  ClientWidth = 318
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'MS Sans Serif'
-  Font.Style = []
+  ClientHeight = 384
+  ClientWidth = 319
   HelpFile = '1'
-  Position = poScreenCenter
   OnHelp = FormHelp
-  PixelsPerInch = 96
-  object gbServerInfo: TGroupBox
+  Position = poScreenCenter
+  object gbServerInfo: TGroupBox[0]
     Left = 11
+    Height = 231
     Top = 10
     Width = 296
-    Height = 231
     Caption = ' Server Information '
+    ClientHeight = 213
+    ClientWidth = 292
     TabOrder = 0
     object lblServerName: TLabel
       Left = 10
+      Height = 13
       Top = 46
       Width = 85
-      Height = 13
       AutoSize = False
       Caption = 'S&erver Name:'
       FocusControl = edtServerName
+      ParentColor = False
     end
     object lblProtocol: TLabel
       Left = 175
+      Height = 13
       Top = 46
       Width = 85
-      Height = 13
       Caption = '&Network Protocol:'
       FocusControl = cbProtocol
+      ParentColor = False
     end
     object lblServerAlias: TLabel
       Left = 10
+      Height = 19
       Top = 94
       Width = 79
-      Height = 19
       AutoSize = False
       Caption = '&Alias Name:'
       FocusControl = edtServerAlias
+      ParentColor = False
     end
     object Label1: TLabel
       Left = 10
+      Height = 13
       Top = 142
       Width = 56
-      Height = 13
       Caption = '&Description:'
       FocusControl = edtDescription
+      ParentColor = False
     end
     object cbProtocol: TComboBox
       Left = 175
+      Height = 21
       Top = 64
       Width = 103
-      Height = 21
-      Style = csDropDownList
       ItemHeight = 13
-      TabOrder = 3
       Items.Strings = (
         'TCP/IP'
         'NetBEUI'
-        'SPX')
+        'SPX'
+      )
+      Style = csDropDownList
+      TabOrder = 3
     end
     object edtServerName: TEdit
       Left = 10
+      Height = 21
       Top = 64
       Width = 133
-      Height = 21
       TabOrder = 2
     end
     object rbLocalServer: TRadioButton
       Left = 28
+      Height = 19
       Top = 16
-      Width = 105
-      Height = 17
+      Width = 80
       Caption = '&Local Server'
       Checked = True
+      OnClick = rbLocalServerClick
       TabOrder = 0
       TabStop = True
-      OnClick = rbLocalServerClick
     end
     object rbRemoteServer: TRadioButton
       Left = 142
+      Height = 19
       Top = 16
-      Width = 111
-      Height = 17
+      Width = 91
       Caption = '&Remote Server'
-      TabOrder = 1
       OnClick = rbRemoteServerClick
+      TabOrder = 1
     end
     object edtServerAlias: TEdit
       Left = 10
+      Height = 21
       Top = 112
       Width = 269
-      Height = 21
       ParentShowHint = False
       ShowHint = True
       TabOrder = 4
     end
     object chkSaveAlias: TCheckBox
       Left = 9
+      Height = 19
       Top = 189
-      Width = 175
-      Height = 17
+      Width = 125
       Caption = '&Save Alias Information'
       Checked = True
       State = cbChecked
@@ -119,71 +120,76 @@ object frmServerRegister: TfrmServerRegister
     end
     object edtDescription: TEdit
       Left = 10
+      Height = 21
       Top = 158
       Width = 269
-      Height = 21
       TabOrder = 5
     end
   end
-  object gbLoginInfo: TGroupBox
+  object gbLoginInfo: TGroupBox[1]
     Left = 12
+    Height = 85
     Top = 253
     Width = 296
-    Height = 85
     Caption = ' Login Information '
+    ClientHeight = 67
+    ClientWidth = 292
     TabOrder = 1
     object lblUsername: TLabel
       Left = 10
+      Height = 13
       Top = 10
       Width = 56
-      Height = 13
       Caption = '&User Name:'
       FocusControl = edtUsername
+      ParentColor = False
     end
     object lblPassword: TLabel
       Left = 10
+      Height = 13
       Top = 40
       Width = 49
-      Height = 13
       Caption = '&Password:'
       FocusControl = edtPassword
+      ParentColor = False
     end
     object edtUsername: TEdit
       Left = 90
+      Height = 21
       Top = 10
       Width = 175
-      Height = 21
-      CharCase = ecUpperCase
+      CharCase = ecUppercase
       MaxLength = 128
       TabOrder = 0
     end
     object edtPassword: TEdit
       Left = 90
+      Height = 21
       Top = 40
       Width = 175
-      Height = 21
+      EchoMode = emPassword
       MaxLength = 32
       PasswordChar = '*'
       TabOrder = 1
     end
   end
-  object btnOK: TButton
+  object btnOK: TButton[2]
     Left = 126
+    Height = 25
     Top = 346
     Width = 75
-    Height = 25
     Caption = '&OK'
     Default = True
-    TabOrder = 2
     OnClick = btnOKClick
+    TabOrder = 2
   end
-  object btnCancel: TButton
+  object btnCancel: TButton[3]
     Left = 203
+    Height = 25
     Top = 346
     Width = 75
-    Height = 25
     Caption = '&Cancel'
-    TabOrder = 3
     OnClick = btnCancelClick
+    TabOrder = 3
   end
 end

@@ -260,11 +260,13 @@ var
   fSt: string;
 begin
   if FRegistry.OpenKey(gRegServersKey, FALSE) then
-    Result := true
+  begin
+    //Result := true
+    fSt := Format('%s%s\',[gRegServersKey, Alias]);
+    Result := FRegistry.KeyExists(fSt);
+  end
   else
     Result := false;
-  //fSt := Format('%s%s\',[gRegServersKey, Alias]);
-  //Result := FRegistry.KeyExists(fSt);
 end;
 
 procedure TibcPersistentInfo.DeleteServerAlias(Alias: string);

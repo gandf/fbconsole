@@ -48,7 +48,7 @@ function IsValidDBName(const DBName: String): boolean;
 implementation
 
 uses
-  zluGlobal, zluPersistent, frmuMessage, IBHeader;
+  zluGlobal, zluPersistent, frmuMessage, IBHeader, frmuMain;
 
 
 function CheckDirectory(Directory: string): boolean;
@@ -415,8 +415,11 @@ begin
 end;
 
 function IsServerRegistered(const Alias: String): boolean;
+var
+  MainForm_L: TfrmMain;
 begin
-  Result := PersistentInfo.ServerAliasExists(Alias);
+  MainForm_L := TfrmMain(Application.MainForm);
+  Result := MainForm_L.PersistentInfo.ServerAliasExists(Alias);
 end;
 
 function Max (const val1, val2: integer): integer;

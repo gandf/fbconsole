@@ -8,8 +8,8 @@
       <Unit0>
         <Filename Value="Firebird_Management_Studio.lpr"/>
         <IsPartOfProject Value="True"/>
-        <TopLine Value="8"/>
-        <CursorPos X="37" Y="14"/>
+        <TopLine Value="55"/>
+        <CursorPos X="43" Y="80"/>
         <UsageCount Value="1315"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -279,7 +279,7 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="frmuMain"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="2914"/>
+        <TopLine Value="2917"/>
         <CursorPos Y="2929"/>
         <UsageCount Value="1315"/>
         <Loaded Value="True"/>
@@ -350,11 +350,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="frmuServerRegister"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="5"/>
-        <TopLine Value="138"/>
-        <CursorPos X="46" Y="149"/>
+        <TopLine Value="146"/>
+        <CursorPos X="54" Y="154"/>
         <UsageCount Value="1315"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit29>
       <Unit30>
         <Filename Value="frmuSQLOptions.pas"/>
@@ -485,10 +487,9 @@
         <Filename Value="zluPersistent.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="zluPersistent"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="247"/>
-        <CursorPos X="27" Y="263"/>
+        <TopLine Value="246"/>
+        <CursorPos X="47" Y="265"/>
         <UsageCount Value="1315"/>
         <Loaded Value="True"/>
       </Unit42>
@@ -506,8 +507,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="zluUtility"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="404"/>
-        <CursorPos X="27" Y="419"/>
+        <TopLine Value="406"/>
+        <CursorPos Y="422"/>
         <UsageCount Value="1315"/>
         <Loaded Value="True"/>
       </Unit44>
@@ -524,198 +525,164 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="1437"/>
         <CursorPos Y="1453"/>
-        <UsageCount Value="633"/>
+        <UsageCount Value="609"/>
       </Unit46>
       <Unit47>
         <Filename Value="C:\lazarus\lcl\include\wincontrol.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="4328"/>
         <CursorPos Y="4342"/>
-        <UsageCount Value="633"/>
+        <UsageCount Value="609"/>
       </Unit47>
       <Unit48>
         <Filename Value="C:\lazarus\fpc\2.6.4\source\packages\fcl-registry\src\registry.pp"/>
         <UnitName Value="registry"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="75"/>
         <CursorPos X="25" Y="102"/>
         <UsageCount Value="594"/>
-        <Loaded Value="True"/>
       </Unit48>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="zluUtility.pas"/>
-        <Caret Line="419" Column="27" TopLine="404"/>
+        <Caret Line="419" Column="40" TopLine="406"/>
       </Position1>
       <Position2>
-        <Filename Value="zluPersistent.pas"/>
-        <Caret Line="120" TopLine="105"/>
+        <Filename Value="frmuMain.pas"/>
+        <Caret Line="2929" TopLine="2917"/>
       </Position2>
       <Position3>
-        <Filename Value="zluPersistent.pas"/>
-        <Caret Line="157" TopLine="142"/>
+        <Filename Value="frmuServerRegister.pas"/>
+        <Caret Line="140" TopLine="126"/>
       </Position3>
       <Position4>
-        <Filename Value="zluPersistent.pas"/>
-        <Caret Line="171" TopLine="147"/>
+        <Filename Value="frmuServerRegister.pas"/>
+        <Caret Line="144" Column="23" TopLine="126"/>
       </Position4>
       <Position5>
-        <Filename Value="frmuMain.pas"/>
-        <Caret Line="2929" TopLine="2924"/>
+        <Filename Value="frmuServerRegister.pas"/>
+        <Caret Line="156" TopLine="142"/>
       </Position5>
       <Position6>
-        <Filename Value="frmuMain.pas"/>
-        <Caret Line="2930" TopLine="2924"/>
+        <Filename Value="frmuServerRegister.pas"/>
+        <Caret Line="157" TopLine="142"/>
       </Position6>
       <Position7>
-        <Filename Value="Firebird_Management_Studio.lpr"/>
-        <Caret Line="63" TopLine="35"/>
+        <Filename Value="frmuServerRegister.pas"/>
+        <Caret Line="160" Column="45" TopLine="142"/>
       </Position7>
       <Position8>
-        <Filename Value="zluPersistent.pas"/>
-        <Caret Line="120" TopLine="105"/>
+        <Filename Value="frmuServerRegister.pas"/>
+        <Caret Line="140" TopLine="126"/>
       </Position8>
       <Position9>
-        <Filename Value="zluPersistent.pas"/>
-        <Caret Line="157" TopLine="142"/>
+        <Filename Value="frmuServerRegister.pas"/>
+        <Caret Line="160" TopLine="146"/>
       </Position9>
       <Position10>
-        <Filename Value="zluPersistent.pas"/>
-        <Caret Line="171" TopLine="147"/>
+        <Filename Value="zluUtility.pas"/>
+        <Caret Line="421" TopLine="406"/>
       </Position10>
       <Position11>
-        <Filename Value="frmuMain.pas"/>
-        <Caret Line="2929" TopLine="2908"/>
+        <Filename Value="zluUtility.pas"/>
+        <Caret Line="422" TopLine="406"/>
       </Position11>
       <Position12>
-        <Filename Value="frmuMain.pas"/>
-        <Caret Line="2930" TopLine="2908"/>
+        <Filename Value="zluUtility.pas"/>
+        <Caret Line="419" Column="55" TopLine="406"/>
       </Position12>
       <Position13>
-        <Filename Value="frmuMain.pas"/>
-        <Caret Line="2931" Column="26" TopLine="2908"/>
+        <Filename Value="frmuServerRegister.pas"/>
+        <Caret Line="140" TopLine="126"/>
       </Position13>
       <Position14>
-        <Filename Value="frmuMain.pas"/>
+        <Filename Value="frmuServerRegister.pas"/>
+        <Caret Line="160" TopLine="146"/>
       </Position14>
       <Position15>
-        <Filename Value="frmuMain.pas"/>
-        <Caret Line="434" Column="68" TopLine="410"/>
+        <Filename Value="zluUtility.pas"/>
+        <Caret Line="421" TopLine="406"/>
       </Position15>
       <Position16>
-        <Filename Value="frmuMain.pas"/>
-        <Caret Line="2931" Column="26" TopLine="2907"/>
+        <Filename Value="zluUtility.pas"/>
+        <Caret Line="422" TopLine="406"/>
       </Position16>
       <Position17>
-        <Filename Value="Firebird_Management_Studio.lpr"/>
-        <Caret Line="14" Column="37" TopLine="8"/>
+        <Filename Value="zluPersistent.pas"/>
+        <Caret Line="261" TopLine="246"/>
       </Position17>
       <Position18>
         <Filename Value="zluPersistent.pas"/>
-        <Caret Line="120" TopLine="105"/>
+        <Caret Line="262" TopLine="246"/>
       </Position18>
       <Position19>
         <Filename Value="zluPersistent.pas"/>
-        <Caret Line="157" TopLine="142"/>
+        <Caret Line="268" Column="5" TopLine="246"/>
       </Position19>
       <Position20>
-        <Filename Value="zluPersistent.pas"/>
-        <Caret Line="171" TopLine="147"/>
+        <Filename Value="frmuServerRegister.pas"/>
+        <Caret Line="140" TopLine="126"/>
       </Position20>
       <Position21>
-        <Filename Value="frmuMain.pas"/>
-        <Caret Line="2925" Column="48" TopLine="2914"/>
+        <Filename Value="frmuServerRegister.pas"/>
+        <Caret Line="162" Column="27" TopLine="146"/>
       </Position21>
       <Position22>
-        <Filename Value="frmuMain.pas"/>
-        <Caret Line="2930" TopLine="2914"/>
+        <Filename Value="frmuServerRegister.pas"/>
+        <Caret Line="140" TopLine="126"/>
       </Position22>
       <Position23>
-        <Filename Value="frmuMain.pas"/>
-        <Caret Line="2931" TopLine="2914"/>
+        <Filename Value="frmuServerRegister.pas"/>
+        <Caret Line="160" TopLine="146"/>
       </Position23>
       <Position24>
-        <Filename Value="zluPersistent.pas"/>
-        <Caret Line="120" TopLine="105"/>
+        <Filename Value="zluUtility.pas"/>
+        <Caret Line="421" TopLine="406"/>
       </Position24>
       <Position25>
-        <Filename Value="zluPersistent.pas"/>
-        <Caret Line="157" TopLine="142"/>
+        <Filename Value="zluUtility.pas"/>
+        <Caret Line="422" TopLine="406"/>
       </Position25>
       <Position26>
         <Filename Value="zluPersistent.pas"/>
-        <Caret Line="161" Column="36" TopLine="147"/>
+        <Caret Line="265" Column="5" TopLine="246"/>
       </Position26>
       <Position27>
-        <Filename Value="zluPersistent.pas"/>
-        <Caret Line="120" TopLine="105"/>
+        <Filename Value="frmuServerRegister.pas"/>
+        <Caret Line="140" TopLine="126"/>
       </Position27>
       <Position28>
         <Filename Value="zluPersistent.pas"/>
-        <Caret Line="157" TopLine="142"/>
+        <Caret Line="265" TopLine="246"/>
       </Position28>
       <Position29>
         <Filename Value="zluPersistent.pas"/>
-        <Caret Line="171" TopLine="147"/>
+        <Caret Line="267" Column="29" TopLine="246"/>
       </Position29>
       <Position30>
-        <Filename Value="frmuMain.pas"/>
-        <Caret Line="2929" TopLine="2914"/>
+        <Filename Value="zluPersistent.pas"/>
+        <Caret Line="265" Column="47" TopLine="246"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>
   <Debugging>
-    <BreakPoints Count="5">
+    <BreakPoints Count="1">
       <Item1>
         <Kind Value="bpkSource"/>
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
-        <Source Value="zluPersistent.pas"/>
-        <Line Value="262"/>
+        <Source Value="frmuServerRegister.pas"/>
+        <Line Value="140"/>
       </Item1>
-      <Item2>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="zluPersistent.pas"/>
-        <Line Value="157"/>
-      </Item2>
-      <Item3>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="zluPersistent.pas"/>
-        <Line Value="171"/>
-      </Item3>
-      <Item4>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="frmuMain.pas"/>
-        <Line Value="2929"/>
-      </Item4>
-      <Item5>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="zluPersistent.pas"/>
-        <Line Value="120"/>
-      </Item5>
     </BreakPoints>
-    <Watches Count="4">
+    <Watches Count="2">
       <Item1>
-        <Expression Value="gRegSettingsKey"/>
+        <Expression Value="frmServerRegister.rbLocalServer.Enabled"/>
       </Item1>
       <Item2>
-        <Expression Value="fSt"/>
+        <Expression Value="frmServerRegister.rbRemoteServer.Enabled"/>
       </Item2>
-      <Item3>
-        <Expression Value="FRegistry"/>
-      </Item3>
-      <Item4>
-        <Expression Value="frmuServerRegister"/>
-      </Item4>
     </Watches>
   </Debugging>
 </CONFIG>
