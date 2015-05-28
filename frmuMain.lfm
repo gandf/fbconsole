@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
   Left = 267
   Height = 434
-  Top = 182
+  Top = 202
   Width = 632
   HelpContext = 1
   ActiveControl = tvMain

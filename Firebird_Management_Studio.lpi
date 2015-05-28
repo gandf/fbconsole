@@ -15,7 +15,11 @@
       <EnableI18N LFM="False"/>
     </i18n>
     <VersionInfo>
-      <StringTable ProductVersion=""/>
+      <UseVersionInfo Value="True"/>
+      <BuildNr Value="1"/>
+      <Language Value="040C"/>
+      <Attributes pvaDebug="True"/>
+      <StringTable ProductName="Firebird Management Studio" ProductVersion=""/>
     </VersionInfo>
     <MacroValues Count="1">
       <Macro1 Name="LCLWidgetType" Value="win32"/>
@@ -73,6 +77,7 @@
         <ComponentName Value="frmAbout"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuAbout"/>
       </Unit3>
       <Unit4>
         <Filename Value="frmuAddTool.pas"/>
@@ -80,6 +85,7 @@
         <ComponentName Value="frmAddTools"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuAddTool"/>
       </Unit4>
       <Unit5>
         <Filename Value="frmuBackupAliasProperties.pas"/>
@@ -87,6 +93,7 @@
         <ComponentName Value="frmBackupAliasProperties"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuBackupAliasProperties"/>
       </Unit5>
       <Unit6>
         <Filename Value="frmuCommDiag.pas"/>
@@ -94,6 +101,7 @@
         <ComponentName Value="frmCommDiag"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuCommDiag"/>
       </Unit6>
       <Unit7>
         <Filename Value="frmuDBBackup.pas"/>
@@ -101,6 +109,7 @@
         <ComponentName Value="frmDBBackup"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuDBBackup"/>
       </Unit7>
       <Unit8>
         <Filename Value="frmuDBConnect.pas"/>
@@ -108,6 +117,7 @@
         <ComponentName Value="frmDBConnect"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuDBConnect"/>
       </Unit8>
       <Unit9>
         <Filename Value="frmuDBConnections.pas"/>
@@ -115,6 +125,7 @@
         <ComponentName Value="frmDBConnections"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuDBConnections"/>
       </Unit9>
       <Unit10>
         <Filename Value="frmuDBCreate.pas"/>
@@ -122,6 +133,7 @@
         <ComponentName Value="frmDBCreate"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuDBCreate"/>
       </Unit10>
       <Unit11>
         <Filename Value="frmuDBProperties.pas"/>
@@ -129,6 +141,7 @@
         <ComponentName Value="frmDBProperties"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuDBProperties"/>
       </Unit11>
       <Unit12>
         <Filename Value="frmuDBRegister.pas"/>
@@ -136,6 +149,7 @@
         <ComponentName Value="frmDBRegister"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuDBRegister"/>
       </Unit12>
       <Unit13>
         <Filename Value="frmuDBRestore.pas"/>
@@ -143,6 +157,7 @@
         <ComponentName Value="frmDBRestore"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuDBRestore"/>
       </Unit13>
       <Unit14>
         <Filename Value="frmuDBShutdown.pas"/>
@@ -150,6 +165,7 @@
         <ComponentName Value="frmDBShutdown"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuDBShutdown"/>
       </Unit14>
       <Unit15>
         <Filename Value="frmuDBStatistics.pas"/>
@@ -157,6 +173,7 @@
         <ComponentName Value="frmDBStatistics"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuDBStatistics"/>
       </Unit15>
       <Unit16>
         <Filename Value="frmuDBTransactions.pas"/>
@@ -164,6 +181,7 @@
         <ComponentName Value="frmDBTransactions"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuDBTransactions"/>
       </Unit16>
       <Unit17>
         <Filename Value="frmuDBValidation.pas"/>
@@ -171,6 +189,7 @@
         <ComponentName Value="frmDBValidation"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuDBValidation"/>
       </Unit17>
       <Unit18>
         <Filename Value="frmuDBValidationReport.pas"/>
@@ -178,6 +197,7 @@
         <ComponentName Value="frmDBValidationReport"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuDBValidationReport"/>
       </Unit18>
       <Unit19>
         <Filename Value="frmuDescription.pas"/>
@@ -185,6 +205,7 @@
         <ComponentName Value="frmDescription"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuDescription"/>
       </Unit19>
       <Unit20>
         <Filename Value="frmuDisplayBlob.pas"/>
@@ -192,6 +213,7 @@
         <ComponentName Value="frmDisplayBlob"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuDisplayBlob"/>
       </Unit20>
       <Unit21>
         <Filename Value="frmuDispMemo.pas"/>
@@ -199,6 +221,7 @@
         <ComponentName Value="frmDispMemo"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuDispMemo"/>
       </Unit21>
       <Unit22>
         <Filename Value="frmuDlgClass.pas"/>
@@ -206,6 +229,7 @@
         <ComponentName Value="Dialog"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuDlgClass"/>
       </Unit22>
       <Unit23>
         <Filename Value="frmuMain.pas"/>
@@ -221,6 +245,7 @@
         <ComponentName Value="frmMessage"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuMessage"/>
       </Unit24>
       <Unit25>
         <Filename Value="frmuModifyServerAlias.pas"/>
@@ -228,6 +253,7 @@
         <ComponentName Value="frmModifyServerAlias"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuModifyServerAlias"/>
       </Unit25>
       <Unit26>
         <Filename Value="frmuObjectWindow.pas"/>
@@ -235,6 +261,7 @@
         <ComponentName Value="frmObjectView"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuObjectWindow"/>
       </Unit26>
       <Unit27>
         <Filename Value="frmuServerLogin.pas"/>
@@ -242,6 +269,7 @@
         <ComponentName Value="frmServerLogin"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuServerLogin"/>
       </Unit27>
       <Unit28>
         <Filename Value="frmuServerProperties.pas"/>
@@ -249,6 +277,7 @@
         <ComponentName Value="frmServerProperties"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuServerProperties"/>
       </Unit28>
       <Unit29>
         <Filename Value="frmuServerRegister.pas"/>
@@ -264,6 +293,7 @@
         <ComponentName Value="frmSQLOptions"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuSQLOptions"/>
       </Unit30>
       <Unit31>
         <Filename Value="frmuTextViewer.pas"/>
@@ -271,6 +301,7 @@
         <ComponentName Value="frmTextViewer"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuTextViewer"/>
       </Unit31>
       <Unit32>
         <Filename Value="frmuTools.pas"/>
@@ -278,6 +309,7 @@
         <ComponentName Value="frmTools"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuTools"/>
       </Unit32>
       <Unit33>
         <Filename Value="frmuUser.pas"/>
@@ -285,6 +317,7 @@
         <ComponentName Value="frmUserInfo"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuUser"/>
       </Unit33>
       <Unit34>
         <Filename Value="frmuWindowList.pas"/>
@@ -292,14 +325,17 @@
         <ComponentName Value="dlgWindowList"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmuWindowList"/>
       </Unit34>
       <Unit35>
         <Filename Value="IBExtract.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="IBExtract"/>
       </Unit35>
       <Unit36>
         <Filename Value="MemoLists.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="MemoLists"/>
       </Unit36>
       <Unit37>
         <Filename Value="wisql.pas"/>
@@ -319,6 +355,7 @@
       <Unit40>
         <Filename Value="zluGlobal.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="zluGlobal"/>
       </Unit40>
       <Unit41>
         <Filename Value="zluibcClasses.pas"/>

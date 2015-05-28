@@ -155,6 +155,7 @@ inherited frmCommDiag: TfrmCommDiag
             'TCP/IP'
             'NetBEUI'
             'SPX'
+            'Local Server'
           )
           Style = csDropDownList
           TabOrder = 3
