@@ -1,28 +1,28 @@
 object frmSplash: TfrmSplash
-  Left = 294
-  Top = 170
   Cursor = crHourGlass
+  Left = 293
+  Height = 271
+  Top = 169
+  Width = 440
   BorderIcons = []
   BorderStyle = bsNone
-  ClientHeight = 270
-  ClientWidth = 439
+  ClientHeight = 271
+  ClientWidth = 440
   Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -14
   Font.Name = 'MS Sans Serif'
-  Font.Style = []
   Position = poScreenCenter
-  PixelsPerInch = 96
+  LCLVersion = '1.4.0.2'
   object imgSplash: TImage
     Left = 0
+    Height = 271
     Top = 0
-    Width = 439
-    Height = 270
+    Width = 440
     Align = alClient
     AutoSize = True
     Picture.Data = {
-      0A544A504547496D616765B53A0000FFD8FFE000104A46494600010101012C01
+      0A544A706567496D616765B53A0000FFD8FFE000104A46494600010101012C01
       2C0000FFDB004300100B0C0E0C0A100E0D0E1211101318281A18161618312325
       1D283A333D3C3933383740485C4E404457453738506D51575F626768673E4D71
       797064785C656763FFDB0043011112121815182F1A1A2F634238426363636363
@@ -492,7 +492,8 @@ object frmSplash: TfrmSplash
       153D4666514515420A28A2800A28A28014120D4824A28A00956404738A531AB0
       A28A87A0C89A123A544CA57A8A28AA4C42514514C029C0F1451400DA28A2800A
       9A33F2D14526044DC1A4A28A601451450014A0D1450038303430CD14500328A2
-      8A00FFD9}
+      8A00FFD9
+    }
     Stretch = True
   end
 end
