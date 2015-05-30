@@ -1,14 +1,14 @@
 object frmMain: TfrmMain
   Left = 267
-  Height = 434
+  Height = 440
   Top = 202
-  Width = 632
+  Width = 641
   HelpContext = 1
   ActiveControl = tvMain
   BorderIcons = [biSystemMenu, biMinimize, biMaximize, biHelp]
   Caption = 'IBConsole'
-  ClientHeight = 414
-  ClientWidth = 632
+  ClientHeight = 420
+  ClientWidth = 641
   Color = clBtnFace
   Font.Color = clWindowText
   Font.Height = -11
@@ -26,15 +26,15 @@ object frmMain: TfrmMain
   LCLVersion = '1.4.0.2'
   object splVertical: TSplitter
     Left = 246
-    Height = 356
+    Height = 362
     Top = 35
     Width = 3
   end
   object stbMain: TStatusBar
     Left = 0
     Height = 23
-    Top = 391
-    Width = 632
+    Top = 397
+    Width = 641
     Panels = <    
       item
         Width = 200
@@ -54,7 +54,7 @@ object frmMain: TfrmMain
     Left = 0
     Height = 35
     Top = 0
-    Width = 632
+    Width = 641
     AutoSize = True
     Bands = <    
       item
@@ -135,7 +135,7 @@ object frmMain: TfrmMain
   end
   object tvMain: TTreeView
     Left = 0
-    Height = 356
+    Height = 362
     Top = 35
     Width = 246
     Align = alLeft
@@ -161,9 +161,9 @@ object frmMain: TfrmMain
   end
   object lvObjects: TListView
     Left = 249
-    Height = 356
+    Height = 362
     Top = 35
-    Width = 383
+    Width = 392
     Align = alClient
     Columns = <>
     ColumnClick = False
