@@ -525,7 +525,7 @@ var
   lCnt: integer;
 begin
   {First, setup a handler for detecting multiple instances }
-  IBConsole_msg := RegisterWindowMessage('ib_console_mtx');
+  IBConsole_msg := RegisterWindowMessage('fb_man_studio_mtx');
   {Set window proc to IBConsoleWindowProc. Save the old one}
   OldWindowProc := Pointer(SetWindowLong(frmMain.Handle,
                                          GWL_WNDPROC,
