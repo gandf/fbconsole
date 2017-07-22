@@ -1442,26 +1442,8 @@ object frmMain: TfrmMain
       OnClick = Window2Click
     end
     object Help1: TMenuItem
-      Caption = '&Help'
+      Action = HelpAbout
       SubMenuImages = imgToolBarsEnabled
-      object Contents2: TMenuItem
-        Action = HelpContents
-      end
-      object TopicSearch1: TMenuItem
-        Action = HelpTopicSearch
-      end
-      object RemoveAlias2: TMenuItem
-        Action = HelpOnHelp
-      end
-      object InterBaseHelp2: TMenuItem
-        Action = HelpInterBase
-      end
-      object N18: TMenuItem
-        Caption = '-'
-      end
-      object About2: TMenuItem
-        Action = HelpAbout
-      end
     end
   end
   object imgTreeview: TImageList

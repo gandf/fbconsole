@@ -83,12 +83,6 @@ type
     Validation2: TMenuItem;
     InteractiveSQL2: TMenuItem;
     Configure1: TMenuItem;
-    Contents2: TMenuItem;
-    TopicSearch1: TMenuItem;
-    RemoveAlias2: TMenuItem;
-    InterBaseHelp2: TMenuItem;
-    About2: TMenuItem;
-    N18: TMenuItem;
     N19: TMenuItem;
     N20: TMenuItem;
     N21: TMenuItem;
@@ -2115,29 +2109,28 @@ end;
 
 procedure TfrmMain.mmiHeContentsClick(Sender: TObject);
 begin
-   //WinHelp(Handle,CONTEXT_HELP_FILE,HELP_FINDER,0);
+
 end;
 
 procedure TfrmMain.mmiHeOverviewClick(Sender: TObject);
 begin
-  //WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_CONTEXT,GENERAL_OVERVIEW);
+
 end;
 
 procedure TfrmMain.mmiHeUsingHelpClick(Sender: TObject);
 begin
-   //WinHelp(Handle,CONTEXT_HELP_FILE,HELP_HELPONHELP,0);
+
 end;
 
 procedure TfrmMain.mmiHeInterBaseHelpClick(Sender: TObject);
 begin
-   //WinHelp(Handle,INTERBASE_HELP_FILE,HELP_FINDER,0);
+
 end;
 
 function TfrmMain.FormHelp(Command: Word; Data: Integer;
   var CallHelp: Boolean): Boolean;
 begin
-  CallHelp := False;
-  //Result := WinHelp(WindowHandle,CONTEXT_HELP_FILE,HELP_FINDER,0);
+
 end;
 
 procedure TfrmMain.tvMainKeyPress(Sender: TObject; var Key: Char);
